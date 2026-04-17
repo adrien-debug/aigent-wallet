@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RequestAccessDialog } from "@/components/marketing/request-access-dialog";
 import { staggerContainer, fadeUp } from "@/lib/motion";
+import { Terminal, Zap, Shield, Activity, Lock } from "lucide-react";
 
 const logos = [
   "Northwind Autonomy",
@@ -48,79 +49,76 @@ export function LandingSections() {
         <PageWrapper>
           <SectionHeader
             align="center"
-            eyebrow="The OS"
             title="A new substrate for agents"
             description="Human-centric wallets assume discretionary signing. Agents need programmatic limits, counterparty intelligence, and replay-safe execution paths."
           />
 
-          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-6">
-            {/* Block 1: Policy Engine (Large) */}
-            <div className="group relative col-span-1 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04] md:col-span-2 lg:p-12">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              <Terminal className="mb-6 h-8 w-8 text-primary" />
-              <h3 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
-                Infrastructure as Code
-              </h3>
-              <p className="mt-4 max-w-md text-lg text-white/60">
-                Author policies once, version them like services, and shadow-test
-                against live traffic before enforcement.
-              </p>
-              <div className="mt-10 rounded-2xl border border-white/10 bg-black/50 p-6 font-mono text-sm text-white/40 shadow-inner">
-                <p className="text-white/80">policy.evaluate(intent)</p>
+          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-12 lg:gap-8">
+            {/* Block 1: White Background, Massive Typography (Col span 7) */}
+            <div className="group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-white p-10 transition-transform hover:-translate-y-1 md:col-span-7 lg:p-16">
+              <div>
+                <h3 className="text-balance text-4xl font-medium tracking-tight text-black sm:text-5xl lg:text-6xl lg:leading-[1.1]">
+                  Build to run the future of work
+                </h3>
+                <p className="mt-6 max-w-md text-lg text-black/60 sm:text-xl">
+                  Author policies once, version them like services, and shadow-test
+                  against live traffic before enforcement.
+                </p>
+              </div>
+              <div className="mt-16 rounded-2xl border border-black/10 bg-black/5 p-6 font-mono text-sm text-black/60">
+                <p className="text-black">policy.evaluate(intent)</p>
                 <p className="mt-2">→ simulation.ok</p>
                 <p>
-                  → risk.score = <span className="text-primary">18</span>
+                  → risk.score = <span className="font-semibold text-black">18</span>
                 </p>
                 <p>→ approval.not_required</p>
-                <p className="mt-2 text-emerald-400">→ relay.broadcast()</p>
+                <p className="mt-2 font-medium text-black">→ relay.broadcast()</p>
               </div>
             </div>
 
-            {/* Block 2: Streaming (Tall) */}
-            <div className="group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04] lg:p-12">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            {/* Block 2: Black Background, Tall (Col span 5) */}
+            <div className="group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-5 lg:p-16">
               <div>
-                <Zap className="mb-6 h-8 w-8 text-primary" />
-                <h3 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
-                  Sub-second Settlement
+                <h3 className="text-balance text-4xl font-medium tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]">
+                  The foundation
                 </h3>
-                <p className="mt-4 text-lg text-white/60">
+                <p className="mt-6 text-lg text-white/60 sm:text-xl">
                   Burst-aware smoothing for GPU and data workloads. Machine payments
                   that don't block execution.
                 </p>
               </div>
-              <div className="mt-12 space-y-4">
+              <div className="mt-16 space-y-4">
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-medium text-white/80">USDC Stream</span>
-                  <span className="font-mono text-primary">68%</span>
+                  <span className="font-mono text-white">68%</span>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-white/10">
-                  <div className="h-full w-[68%] rounded-full bg-primary shadow-[0_0_12px_rgba(13,139,255,0.8)]" />
+                  <div className="h-full w-[68%] rounded-full bg-white" />
                 </div>
               </div>
             </div>
 
-            {/* Block 3, 4, 5: Features (Small) */}
-            <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <Shield className="mb-6 h-6 w-6 text-white/40 transition-colors group-hover:text-primary" />
-              <h3 className="text-xl font-medium text-white">
+            {/* Block 3, 4, 5: Features (Small, Monochromatic) */}
+            <div className="group relative col-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-4">
+              <Shield className="mb-8 h-8 w-8 text-white/40 transition-colors group-hover:text-white" />
+              <h3 className="text-2xl font-medium text-white">
                 Deterministic Guardrails
               </h3>
-              <p className="mt-3 text-base text-white/60">
+              <p className="mt-4 text-lg text-white/60">
                 Every spend path is explainable before broadcast.
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <Activity className="mb-6 h-6 w-6 text-white/40 transition-colors group-hover:text-primary" />
-              <h3 className="text-xl font-medium text-white">Operator Telemetry</h3>
-              <p className="mt-3 text-base text-white/60">
+            <div className="group relative col-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-4">
+              <Activity className="mb-8 h-8 w-8 text-white/40 transition-colors group-hover:text-white" />
+              <h3 className="text-2xl font-medium text-white">Operator Telemetry</h3>
+              <p className="mt-4 text-lg text-white/60">
                 Volume, drift, and anomaly signals in real-time.
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <Lock className="mb-6 h-6 w-6 text-white/40 transition-colors group-hover:text-primary" />
-              <h3 className="text-xl font-medium text-white">Scoped Credentials</h3>
-              <p className="mt-3 text-base text-white/60">
+            <div className="group relative col-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-4">
+              <Lock className="mb-8 h-8 w-8 text-white/40 transition-colors group-hover:text-white" />
+              <h3 className="text-2xl font-medium text-white">Scoped Credentials</h3>
+              <p className="mt-4 text-lg text-white/60">
                 Least-privilege keys with automatic rotation hooks.
               </p>
             </div>
