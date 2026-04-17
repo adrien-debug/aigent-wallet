@@ -18,3 +18,10 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 - `lib`, `types`
 
 No real backend or keys; UI is illustrative.
+
+## Deploy
+
+- **GitHub:** https://github.com/adrien-debug/aigent-wallet
+- **Production (Vercel):** https://aigent-wallet.vercel.app
+
+Git → Vercel : le projet est lié au dépôt ; chaque push sur `main` redéploie.
