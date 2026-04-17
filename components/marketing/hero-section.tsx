@@ -83,7 +83,7 @@ export function HeroSection() {
             </div>
 
             {/* Dashboard Content - 3 Column Layout */}
-            <div className="flex flex-col lg:flex-row h-auto lg:h-[600px]">
+            <div className="flex flex-col lg:flex-row h-auto lg:h-[640px]">
               {/* Left Sidebar: Agents List */}
               <div className="flex w-full flex-col border-b border-white/5 bg-white/[0.01] lg:w-72 lg:border-b-0 lg:border-r">
                 <div className="border-b border-white/5 px-6 py-4">
@@ -236,16 +236,16 @@ export function HeroSection() {
                       </thead>
                       <tbody className="divide-y divide-white/5">
                         <tr>
-                          <td className="py-4 font-medium text-white">
+                          <td className="py-4 font-medium text-white whitespace-nowrap">
                             Compute Broker
                           </td>
-                          <td className="py-4 font-mono text-xs text-white/60">
+                          <td className="py-4 font-mono text-xs text-white/60 whitespace-nowrap">
                             CoreWeave Settlement
                           </td>
-                          <td className="py-4 text-right font-mono text-white">
+                          <td className="py-4 text-right font-mono text-white whitespace-nowrap">
                             12,400 USDC
                           </td>
-                          <td className="py-4 text-right">
+                          <td className="py-4 text-right whitespace-nowrap">
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-medium text-white">
                               <svg
                                 viewBox="0 0 24 24"
@@ -261,16 +261,16 @@ export function HeroSection() {
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-4 font-medium text-white/60">
+                          <td className="py-4 font-medium text-white/60 whitespace-nowrap">
                             Trading Exec
                           </td>
-                          <td className="py-4 font-mono text-xs text-white/40">
+                          <td className="py-4 font-mono text-xs text-white/40 whitespace-nowrap">
                             0xUnk…9f01
                           </td>
-                          <td className="py-4 text-right font-mono text-white/60">
+                          <td className="py-4 text-right font-mono text-white/60 whitespace-nowrap">
                             92,000 USDC
                           </td>
-                          <td className="py-4 text-right">
+                          <td className="py-4 text-right whitespace-nowrap">
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/5 bg-white/[0.02] px-2 py-0.5 text-[10px] font-medium text-white/40">
                               <svg
                                 viewBox="0 0 24 24"
@@ -287,14 +287,16 @@ export function HeroSection() {
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-4 font-medium text-white">Market Data</td>
-                          <td className="py-4 font-mono text-xs text-white/60">
+                          <td className="py-4 font-medium text-white whitespace-nowrap">
+                            Market Data
+                          </td>
+                          <td className="py-4 font-mono text-xs text-white/60 whitespace-nowrap">
                             Chainlink Aggregator
                           </td>
-                          <td className="py-4 text-right font-mono text-white">
+                          <td className="py-4 text-right font-mono text-white whitespace-nowrap">
                             820 ETH
                           </td>
-                          <td className="py-4 text-right">
+                          <td className="py-4 text-right whitespace-nowrap">
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-medium text-white">
                               <svg
                                 viewBox="0 0 24 24"
