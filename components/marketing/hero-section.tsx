@@ -66,35 +66,89 @@ export function HeroSection() {
           initial={reduce ? false : { opacity: 0, y: 40 }}
           animate={reduce ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mt-32 w-full max-w-4xl"
+          className="mt-32 w-full max-w-5xl"
         >
-          <div className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.02] shadow-[0_0_120px_-20px_rgba(13,139,255,0.15)] backdrop-blur-3xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50" />
-            <div className="relative px-8 py-16 sm:px-16 sm:py-20">
-              <div className="grid grid-cols-1 gap-12 divide-y divide-white/10 sm:grid-cols-3 sm:gap-6 sm:divide-x sm:divide-y-0">
-                <div className="flex flex-col items-center justify-center text-center">
-                  <p className="text-sm font-medium uppercase tracking-widest text-white/40">
-                    Volume
-                  </p>
-                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
-                    {formatUsd(dashboardMetrics.totalBalanceUsd)}
-                  </p>
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#050505] shadow-[0_0_120px_-20px_rgba(13,139,255,0.15)]">
+            {/* Glass reflection top edge */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+            {/* Subtle background glow */}
+            <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/10 blur-[100px]" />
+
+            {/* Top Bar */}
+            <div className="flex items-center justify-between border-b border-white/5 bg-white/[0.02] px-8 py-4">
+              <div className="flex items-center gap-3">
+                <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                <span className="font-mono text-xs font-medium uppercase tracking-widest text-white/50">
+                  Network Telemetry
+                </span>
+              </div>
+              <div className="hidden items-center gap-4 font-mono text-xs text-white/30 sm:flex">
+                <span>SYS.UPTIME: 99.99%</span>
+                <span>NODE: EU-WEST-1</span>
+              </div>
+            </div>
+
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {/* Metric 1 */}
+              <div className="relative border-b border-white/5 p-10 md:border-b-0 md:border-r">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-white/40">Total Volume</p>
+                  <span className="rounded bg-white/5 px-2 py-1 font-mono text-[10px] text-emerald-400">
+                    +14.2%
+                  </span>
                 </div>
-                <div className="flex flex-col items-center justify-center text-center">
-                  <p className="text-sm font-medium uppercase tracking-widest text-white/40">
-                    Compliance
-                  </p>
-                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
-                    {formatNumber(dashboardMetrics.policyCompliancePct, 1)}%
-                  </p>
+                <p className="mt-6 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
+                  {formatUsd(dashboardMetrics.totalBalanceUsd)}
+                </p>
+                <div className="mt-8 h-1 w-full overflow-hidden rounded-full bg-white/5">
+                  <div className="h-full w-[85%] rounded-full bg-gradient-to-r from-primary/50 to-primary" />
                 </div>
-                <div className="flex flex-col items-center justify-center text-center">
-                  <p className="text-sm font-medium uppercase tracking-widest text-white/40">
-                    Latency
-                  </p>
-                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
-                    12ms
-                  </p>
+              </div>
+
+              {/* Metric 2 */}
+              <div className="relative border-b border-white/5 p-10 md:border-b-0 md:border-r">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-white/40">Policy Compliance</p>
+                  <span className="rounded bg-white/5 px-2 py-1 font-mono text-[10px] text-emerald-400">
+                    STABLE
+                  </span>
+                </div>
+                <p className="mt-6 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
+                  {formatNumber(dashboardMetrics.policyCompliancePct, 1)}%
+                </p>
+                <div className="mt-8 flex h-8 items-end gap-1">
+                  {[40, 60, 50, 80, 70, 90, 85, 100, 95, 99].map((h, i) => (
+                    <div
+                      key={i}
+                      className="w-full rounded-t-sm bg-white/10 transition-all hover:bg-primary/50"
+                      style={{ height: `${h}%` }}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Metric 3 */}
+              <div className="relative p-10">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-white/40">P99 Latency</p>
+                  <span className="rounded bg-white/5 px-2 py-1 font-mono text-[10px] text-primary">
+                    OPTIMAL
+                  </span>
+                </div>
+                <p className="mt-6 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
+                  12<span className="text-3xl text-white/40">ms</span>
+                </p>
+                <div className="mt-8 flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  <span className="font-mono text-xs text-white/40">API Gateway</span>
+                  <div className="ml-auto font-mono text-xs text-white/60">4ms</div>
+                </div>
+                <div className="mt-2 flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span className="font-mono text-xs text-white/40">Policy Engine</span>
+                  <div className="ml-auto font-mono text-xs text-white/60">8ms</div>
                 </div>
               </div>
             </div>
