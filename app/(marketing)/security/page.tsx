@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
+import { PageHero } from "@/components/marketing/page-hero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const items = [
@@ -47,12 +48,16 @@ export const metadata: Metadata = {
   title: "Security",
   description:
     "Policy-based access, simulation, threshold approvals, key isolation, audit logs, rate limits, and emergency freeze.",
+  openGraph: {
+    images: [{ url: "/heroes/hero-security.png", width: 1920, height: 1080 }],
+  },
 };
 
 export default function SecurityPage() {
   return (
-    <div className="border-b border-border/60 py-16 sm:py-20">
-      <PageWrapper>
+    <div className="border-b border-border/60">
+      <PageHero src="/heroes/hero-security.png" alt="Aigent security vault hologram" />
+      <PageWrapper className="py-14 sm:py-18">
         <FadeInView>
           <SectionHeader
             eyebrow="Security"

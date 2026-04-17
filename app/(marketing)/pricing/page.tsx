@@ -3,18 +3,23 @@ import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
 import { PricingCard } from "@/components/marketing/pricing-card";
+import { PageHero } from "@/components/marketing/page-hero";
 import { pricingPlans } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Starter, Growth, and Enterprise plans for wallet limits, policies, audit retention, risk engine, and API access.",
+  openGraph: {
+    images: [{ url: "/heroes/hero-pricing.png", width: 1920, height: 1080 }],
+  },
 };
 
 export default function PricingPage() {
   return (
-    <div className="border-b border-border/60 py-16 sm:py-20">
-      <PageWrapper>
+    <div className="border-b border-border/60">
+      <PageHero src="/heroes/hero-pricing.png" alt="Aigent pricing tier monoliths" />
+      <PageWrapper className="py-14 sm:py-18">
         <FadeInView>
           <SectionHeader
             align="center"

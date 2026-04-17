@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
+import { PageHero } from "@/components/marketing/page-hero";
 import { CodeBlock } from "@/components/marketing/code-block";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -14,12 +15,19 @@ export const metadata: Metadata = {
   title: "Developers",
   description:
     "SDK quickstart, policy evaluation, signed webhooks, and CI-friendly fixtures for agent treasuries.",
+  openGraph: {
+    images: [{ url: "/heroes/hero-developers.png", width: 1920, height: 1080 }],
+  },
 };
 
 export default function DevelopersPage() {
   return (
-    <div className="border-b border-border/60 py-16 sm:py-20">
-      <PageWrapper>
+    <div className="border-b border-border/60">
+      <PageHero
+        src="/heroes/hero-developers.png"
+        alt="Aigent developer API visualization"
+      />
+      <PageWrapper className="py-14 sm:py-18">
         <FadeInView>
           <SectionHeader
             eyebrow="Developers"

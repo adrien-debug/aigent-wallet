@@ -3,6 +3,7 @@ import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
 import { FeatureCard } from "@/components/marketing/feature-card";
+import { PageHero } from "@/components/marketing/page-hero";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -10,12 +11,19 @@ export const metadata: Metadata = {
   title: "Product",
   description:
     "Agent-native wallets with policy compilation, sub-wallets, streaming payments, and AI-grade audit trails.",
+  openGraph: {
+    images: [{ url: "/heroes/hero-product.png", width: 1920, height: 1080 }],
+  },
 };
 
 export default function ProductPage() {
   return (
-    <div className="border-b border-border/60 py-16 sm:py-20">
-      <PageWrapper>
+    <div className="border-b border-border/60">
+      <PageHero
+        src="/heroes/hero-product.png"
+        alt="Aigent wallet cards floating in space"
+      />
+      <PageWrapper className="py-14 sm:py-18">
         <FadeInView>
           <SectionHeader
             eyebrow="Product"

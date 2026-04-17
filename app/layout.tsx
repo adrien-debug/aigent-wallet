@@ -23,6 +23,25 @@ export const metadata: Metadata = {
   },
   description:
     "Programmable treasury for autonomous systems. Policies, simulation, audit, and risk controls built for AI agents.",
+  openGraph: {
+    type: "website",
+    siteName: PRODUCT_NAME,
+    title: `${PRODUCT_NAME} · Financial OS for AI Agents`,
+    description:
+      "Programmable treasury for autonomous systems. Policies, simulation, audit, and risk controls built for AI agents.",
+    images: [
+      {
+        url: "/heroes/og-image.png",
+        width: 1024,
+        height: 1024,
+        alt: `${PRODUCT_NAME} — AI Wallet Infrastructure`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/heroes/og-image.png"],
+  },
 };
 
 export default function RootLayout({
