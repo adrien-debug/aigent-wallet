@@ -18,9 +18,9 @@ export function HeroSection() {
   const initial = reduce ? false : "hidden";
   const animate = reduce ? undefined : "show";
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-40 pb-24">
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-48 pb-32">
       {/* Spotlight Radial Background */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(13,139,255,0.2),rgba(255,255,255,0))] mix-blend-screen" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(13,139,255,0.15),rgba(255,255,255,0))] mix-blend-screen" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
@@ -28,16 +28,15 @@ export function HeroSection() {
           variants={staggerContainer}
           initial={initial}
           animate={animate}
-          className="flex max-w-4xl flex-col items-center space-y-10"
+          className="flex max-w-5xl flex-col items-center space-y-12"
         >
-          <motion.div variants={fadeUp} className="space-y-6">
-            <h1 className="text-balance bg-gradient-to-b from-white to-white/60 bg-clip-text text-6xl font-medium tracking-tighter text-transparent sm:text-8xl lg:text-[6.5rem] lg:leading-[0.95]">
+          <motion.div variants={fadeUp} className="space-y-8">
+            <h1 className="text-balance bg-gradient-to-b from-white to-white/50 bg-clip-text text-7xl font-medium tracking-tighter text-transparent sm:text-8xl lg:text-[8.5rem] lg:leading-[0.85]">
               Autonomous <br className="hidden sm:block" />
-              Treasury
+              Treasury.
             </h1>
-            <p className="mx-auto max-w-2xl text-pretty text-lg text-white/50 sm:text-xl">
-              Programmable wallets, machine payments, and policy enforcement. The
-              financial operating system built for AI agents.
+            <p className="mx-auto max-w-2xl text-pretty text-xl text-white/50 sm:text-2xl">
+              The financial operating system built for AI agents.
             </p>
           </motion.div>
           <motion.div
@@ -45,70 +44,56 @@ export function HeroSection() {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             <RequestAccessDialog>
-              <Button className="h-12 rounded-full px-8 text-base font-medium shadow-[0_0_40px_-10px_rgba(13,139,255,0.5)] transition-shadow hover:shadow-[0_0_60px_-15px_rgba(13,139,255,0.7)]">
-                Request access
+              <Button className="h-14 rounded-full bg-white px-10 text-lg font-medium text-black shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] transition-transform hover:-translate-y-1 hover:bg-white/90 hover:shadow-[0_0_60px_-15px_rgba(255,255,255,0.5)]">
+                Start building
               </Button>
             </RequestAccessDialog>
             <Button
               variant="outline"
-              className="h-12 rounded-full border-white/10 bg-white/5 px-8 text-base text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
+              className="h-14 rounded-full border-white/10 bg-white/5 px-10 text-lg text-white backdrop-blur-md transition-transform hover:-translate-y-1 hover:bg-white/10 hover:text-white"
               asChild
             >
               <Link href={getConsoleEntryHref()}>
                 View demo
-                <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden />
+                <ArrowUpRight className="ml-2 h-5 w-5" aria-hidden />
               </Link>
             </Button>
           </motion.div>
         </motion.div>
 
-        {/* 3D Floating Dashboard Card */}
+        {/* Minimalist 3D Dashboard Metrics */}
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 40, rotateX: 15 }}
           animate={reduce ? undefined : { opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mt-24 w-full max-w-5xl [perspective:1000px]"
+          className="mt-32 w-full max-w-4xl [perspective:1000px]"
         >
-          <div className="relative rounded-3xl border border-white/10 bg-black/40 p-2 shadow-[0_0_100px_-20px_rgba(13,139,255,0.2)] backdrop-blur-2xl">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/5 to-transparent opacity-50" />
-            <div className="relative rounded-2xl border border-white/10 bg-black/60 p-8 sm:p-10">
-              <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-8">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-white/40">
-                    Organization
+          <div className="relative rounded-[2.5rem] border border-white/10 bg-black/40 p-2 shadow-[0_0_100px_-20px_rgba(13,139,255,0.15)] backdrop-blur-2xl">
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-white/5 to-transparent opacity-50" />
+            <div className="relative rounded-[2rem] border border-white/10 bg-[#0a0a0a]/80 px-8 py-12 sm:px-16 sm:py-16">
+              <div className="grid grid-cols-1 gap-12 divide-y divide-white/10 sm:grid-cols-3 sm:gap-6 sm:divide-x sm:divide-y-0">
+                <div className="flex flex-col items-center justify-center text-center">
+                  <p className="text-sm font-medium uppercase tracking-widest text-white/40">
+                    Volume
                   </p>
-                  <p className="mt-1 text-base font-medium text-white">
-                    Aigent · Production
-                  </p>
-                </div>
-                <Badge className="border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-emerald-400">
-                  Live
-                </Badge>
-              </div>
-              <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4">
-                <div className="rounded-2xl border border-white/5 bg-white/5 p-6">
-                  <p className="text-sm font-medium text-white/40">Total balance</p>
-                  <p className="mt-3 font-mono text-3xl font-medium text-white">
+                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white">
                     {formatUsd(dashboardMetrics.totalBalanceUsd)}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/5 bg-white/5 p-6">
-                  <p className="text-sm font-medium text-white/40">Policy compliance</p>
-                  <p className="mt-3 font-mono text-3xl font-medium text-white">
+                <div className="flex flex-col items-center justify-center text-center">
+                  <p className="text-sm font-medium uppercase tracking-widest text-white/40">
+                    Compliance
+                  </p>
+                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white">
                     {formatNumber(dashboardMetrics.policyCompliancePct, 1)}%
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/5 bg-white/5 p-6">
-                  <p className="text-sm font-medium text-white/40">Active wallets</p>
-                  <p className="mt-3 font-mono text-3xl font-medium text-white">
-                    {dashboardMetrics.activeWallets}
+                <div className="flex flex-col items-center justify-center text-center">
+                  <p className="text-sm font-medium uppercase tracking-widest text-white/40">
+                    Latency
                   </p>
-                </div>
-                <div className="rounded-2xl border border-white/5 bg-white/5 p-6">
-                  <p className="text-sm font-medium text-white/40">Risk score</p>
-                  <p className="mt-3 font-mono text-3xl font-medium text-white">
-                    {dashboardMetrics.riskScore}
-                    <span className="text-base font-normal text-white/40"> /100</span>
+                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white">
+                    12ms
                   </p>
                 </div>
               </div>

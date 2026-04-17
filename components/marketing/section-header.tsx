@@ -16,17 +16,19 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col max-w-3xl",
+        "flex flex-col max-w-4xl",
         align === "center" && "mx-auto items-center text-center",
         className,
       )}
     >
-      {eyebrow ? <p className="text-sm font-medium text-primary">{eyebrow}</p> : null}
-      <h2 className="mt-4 text-balance text-4xl font-medium tracking-tight text-white sm:text-5xl lg:text-6xl">
+      {eyebrow ? (
+        <p className="text-base font-medium text-white/60">{eyebrow}</p>
+      ) : null}
+      <h2 className="mt-4 text-balance text-5xl font-medium tracking-tighter text-white sm:text-6xl lg:text-7xl lg:leading-[1.05]">
         {title}
       </h2>
       {description ? (
-        <p className="mt-6 text-pretty text-lg text-white/60 sm:text-xl">
+        <p className="mt-6 max-w-2xl text-pretty text-xl text-white/50 sm:text-2xl">
           {description}
         </p>
       ) : null}

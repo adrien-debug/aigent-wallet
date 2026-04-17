@@ -128,25 +128,24 @@ export function LandingSections() {
 
       <FadeInView>
         <PageWrapper>
-          <div className="relative overflow-hidden rounded-[3rem] border border-primary/20 bg-primary/5 px-6 py-20 text-center sm:px-16 sm:py-32">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(13,139,255,0.15),transparent)]" />
-            <div className="relative z-10 mx-auto max-w-2xl">
-              <h2 className="text-balance text-4xl font-medium tracking-tight text-white sm:text-6xl">
-                Ready when your agents are.
+          <div className="relative overflow-hidden rounded-[3rem] bg-white px-6 py-32 text-center sm:px-16 sm:py-40">
+            <div className="relative z-10 mx-auto max-w-3xl">
+              <h2 className="text-balance text-6xl font-medium tracking-tighter text-black sm:text-8xl">
+                Start building.
               </h2>
-              <p className="mt-6 text-lg text-white/60 sm:text-xl">
+              <p className="mt-8 text-xl text-black/60 sm:text-2xl">
                 Stand up a sandbox org, connect policies, and mirror your production
-                topology without moving funds.
+                topology in minutes.
               </p>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
                 <RequestAccessDialog>
-                  <Button className="h-12 rounded-full px-8 text-base font-medium shadow-[0_0_40px_-10px_rgba(13,139,255,0.5)] transition-shadow hover:shadow-[0_0_60px_-15px_rgba(13,139,255,0.7)]">
+                  <Button className="h-14 rounded-full bg-black px-10 text-lg font-medium text-white transition-transform hover:-translate-y-1 hover:bg-black/90 hover:shadow-2xl">
                     Request access
                   </Button>
                 </RequestAccessDialog>
                 <Button
                   variant="outline"
-                  className="h-12 rounded-full border-white/10 bg-white/5 px-8 text-base text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
+                  className="h-14 rounded-full border-black/10 bg-transparent px-10 text-lg text-black transition-transform hover:-translate-y-1 hover:bg-black/5"
                   asChild
                 >
                   <Link href="/developers">Developer docs</Link>
