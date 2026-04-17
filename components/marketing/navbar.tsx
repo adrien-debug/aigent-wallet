@@ -16,23 +16,23 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur-sm",
+        "fixed inset-x-0 top-6 z-50 mx-auto flex max-w-5xl justify-center px-4",
         className,
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="flex h-14 w-full items-center justify-between gap-8 rounded-full border border-white/10 bg-background/60 px-6 shadow-2xl backdrop-blur-xl">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-card text-sm">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm text-white shadow-inner">
             Ai
           </span>
-          <span>{PRODUCT_NAME}</span>
+          <span className="text-white">{PRODUCT_NAME}</span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Marketing">
           {MARKETING_NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm text-white/60 transition-colors hover:text-white"
             >
               {item.label}
             </Link>
@@ -40,7 +40,11 @@ export function Navbar({ className }: { className?: string }) {
         </nav>
         <div className="flex items-center gap-2">
           <ThemeToggle className="hidden sm:inline-flex" />
-          <Button variant="ghost" className="hidden sm:inline-flex" asChild>
+          <Button
+            variant="ghost"
+            className="hidden text-white/80 hover:bg-white/10 hover:text-white sm:inline-flex"
+            asChild
+          >
             <Link href={getConsoleEntryHref()}>View demo</Link>
           </Button>
           <RequestAccessDialog />
@@ -49,20 +53,23 @@ export function Navbar({ className }: { className?: string }) {
               <Button
                 variant="outline"
                 size="icon"
-                className="md:hidden"
+                className="border-white/10 bg-white/5 text-white hover:bg-white/10 md:hidden"
                 aria-label="Ouvrir le menu"
               >
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[min(100%,320px)]">
+            <SheetContent
+              side="right"
+              className="w-[min(100%,320px)] border-white/10 bg-background/80 backdrop-blur-xl"
+            >
               <div className="mt-8 flex flex-col gap-4">
                 {MARKETING_NAV.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="text-sm font-medium"
+                    className="text-sm font-medium text-white/80 hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -70,7 +77,7 @@ export function Navbar({ className }: { className?: string }) {
                 <Link
                   href={getConsoleEntryHref()}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-medium text-primary"
+                  className="text-sm font-medium text-primary hover:text-primary/80"
                 >
                   View demo
                 </Link>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { SectionHeader } from "@/components/marketing/section-header";
-import { FeatureCard } from "@/components/marketing/feature-card";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -53,18 +52,36 @@ export function LandingSections() {
             description="Human-centric wallets assume discretionary signing. Agents need programmatic limits, counterparty intelligence, and replay-safe execution paths that survive scale."
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <FeatureCard
-              title="Deterministic guardrails"
-              description="Policies compile to evaluation traces. Every spend path is explainable before broadcast."
-            />
-            <FeatureCard
-              title="Hierarchical treasuries"
-              description="Treasury fans out into scoped sub-wallets with caps, asset rules, and agent ownership."
-            />
-            <FeatureCard
-              title="Operator-grade telemetry"
-              description="Volume, drift, and anomaly signals surface where finance and platform teams already work."
-            />
+            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                Deterministic guardrails
+              </h3>
+              <p className="relative z-10 mt-2 text-sm text-white/60">
+                Policies compile to evaluation traces. Every spend path is explainable
+                before broadcast.
+              </p>
+            </div>
+            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                Hierarchical treasuries
+              </h3>
+              <p className="relative z-10 mt-2 text-sm text-white/60">
+                Treasury fans out into scoped sub-wallets with caps, asset rules, and
+                agent ownership.
+              </p>
+            </div>
+            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                Operator-grade telemetry
+              </h3>
+              <p className="relative z-10 mt-2 text-sm text-white/60">
+                Volume, drift, and anomaly signals surface where finance and platform
+                teams already work.
+              </p>
+            </div>
           </div>
         </PageWrapper>
       </FadeInView>
@@ -131,16 +148,28 @@ export function LandingSections() {
             className="mt-10 grid gap-6 md:grid-cols-2"
           >
             <motion.div variants={fadeUp}>
-              <FeatureCard
-                title="Counterparty graph"
-                description="First-touch flows pause or route to review based on historical behavior and attestations."
-              />
+              <div className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                  Counterparty graph
+                </h3>
+                <p className="relative z-10 mt-2 text-sm text-white/60">
+                  First-touch flows pause or route to review based on historical
+                  behavior and attestations.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={fadeUp}>
-              <FeatureCard
-                title="Approvals that scale"
-                description="Quorum workflows with SLA timers, delegated break-glass, and automatic rollback on breach."
-              />
+              <div className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                  Approvals that scale
+                </h3>
+                <p className="relative z-10 mt-2 text-sm text-white/60">
+                  Quorum workflows with SLA timers, delegated break-glass, and automatic
+                  rollback on breach.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </PageWrapper>
@@ -153,10 +182,16 @@ export function LandingSections() {
             title="Risk controls with receipts"
             description="Anomaly models, rate limits, and policy drift alerts converge into a single audit timeline with trace IDs end-to-end."
           />
-          <FeatureCard
-            title="Immutable audit trail"
-            description="Every decision—allow, deny, review—ships with structured context for regulators and internal security."
-          />
+          <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+            <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+              Immutable audit trail
+            </h3>
+            <p className="relative z-10 mt-2 text-sm text-white/60">
+              Every decision—allow, deny, review—ships with structured context for
+              regulators and internal security.
+            </p>
+          </div>
         </PageWrapper>
       </FadeInView>
 
@@ -168,18 +203,33 @@ export function LandingSections() {
             description="Visualize parent treasuries, agent scopes, and policy attachments in one surface purpose-built for operators."
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <FeatureCard
-              title="Parent / child graphs"
-              description="Navigate complex hierarchies with health signals per node."
-            />
-            <FeatureCard
-              title="Scoped credentials"
-              description="Agents receive least-privilege keys with automatic rotation hooks."
-            />
-            <FeatureCard
-              title="Environment parity"
-              description="Sandbox policies against production-shaped traffic safely."
-            />
+            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                Parent / child graphs
+              </h3>
+              <p className="relative z-10 mt-2 text-sm text-white/60">
+                Navigate complex hierarchies with health signals per node.
+              </p>
+            </div>
+            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                Scoped credentials
+              </h3>
+              <p className="relative z-10 mt-2 text-sm text-white/60">
+                Agents receive least-privilege keys with automatic rotation hooks.
+              </p>
+            </div>
+            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
+                Environment parity
+              </h3>
+              <p className="relative z-10 mt-2 text-sm text-white/60">
+                Sandbox policies against production-shaped traffic safely.
+              </p>
+            </div>
           </div>
         </PageWrapper>
       </FadeInView>
