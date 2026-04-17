@@ -28,17 +28,20 @@ Base: `/api/v1`. Découverte: `GET /api/v1` (liste des routes).
 | Méthode | Route | Description |
 |--------|--------|--------------|
 | GET | `/api/v1/metrics` | KPIs + séries (volume, spend, risk) |
-| GET | `/api/v1/wallets` | Liste des wallets |
+| GET | `/api/v1/wallets` | Liste des wallets (seed + mémoire) |
+| POST | `/api/v1/wallets` | Créer un wallet (mémoire) |
 | GET | `/api/v1/wallets/:id` | Détail wallet |
-| GET | `/api/v1/transactions` | `?status=confirmed|pending|failed|blocked|all`, `?q=`, `?walletId=` |
-| GET | `/api/v1/policies` | Liste des policies |
+| GET | `/api/v1/transactions` | `?status=…`, `?q=`, `?walletId=`, `?limit=` (max 200), `?offset=` |
+| GET | `/api/v1/openapi` | Spécification **OpenAPI 3** (JSON) |
+| GET | `/api/v1/policies` | Liste des policies (seed + mémoire) |
+| POST | `/api/v1/policies` | Créer une policy (mémoire) |
 | GET | `/api/v1/policies/:id` | Détail policy |
 | GET | `/api/v1/audit` | Événements d’audit |
 | GET | `/api/v1/alerts` | Alertes risque |
 | GET | `/api/v1/team` | Membres (mock) |
 | GET | `/api/v1/pricing` | Plans tarifaires (mock) |
 
-Réponses: `{ ok: true, data: ... }` ou `{ ok: false, error: { code, message } }`. Données = mocks `data/*` (prêt pour brancher une DB).
+Réponses: `{ ok: true, data: ... }` ou `{ ok: false, error: { code, message }, requestId? }`. Header **`x-request-id`** sur chaque réponse. Données wallets/policies = seeds `data/*` **+** créations **POST** tenues en mémoire sur l’instance (perdu au cold start serverless).
 
 ### Auth (Bearer)
 
@@ -48,10 +51,18 @@ Si `AIGENT_API_KEY` est défini (voir `.env.example`), toutes les routes **`/api
 
 Sans variable d’environnement, l’API reste ouverte (warning en logs) — pratique en local uniquement.
 
-### POST (stubs)
+### CORS (optionnel)
 
-- **`POST /api/v1/wallets`** — JSON : `name`, `type` (`treasury|agent|execution|research`), `network` (`ethereum|arbitrum|base|polygon`), `agent`, `dailyCapUsd` ; optionnel : `policyId`, `policyName`, `parentId`, `tags`. Réponse **201** avec `stub: true` (non persisté).
-- **`POST /api/v1/policies`** — JSON : `name`, `description`, `condition`, `severity` (`info|low|medium|high|critical`) ; optionnel : `status` (`enforced|shadow|draft`). Réponse **201** avec `stub: true`.
+`AIGENT_CORS_ORIGIN` = origine exacte du front (ex. `https://aigent-wallet.vercel.app`). Active `OPTIONS` + en-têtes sur les réponses `/api/v1/*` lorsque le navigateur envoie le même `Origin`.
+
+### POST (stubs + mémoire)
+
+- **`POST /api/v1/wallets`** — JSON : `name`, `type`, `network`, `agent`, `dailyCapUsd` ; optionnels : `policyId`, `policyName`, `parentId`, `tags`. **201** — entité ajoutée au store mémoire ; visible dans `GET /api/v1/wallets` tant que l’instance est chaude.
+- **`POST /api/v1/policies`** — JSON : `name`, `description`, `condition`, `severity` ; optionnel : `status`. **201** — idem, fusionné dans `GET /api/v1/policies`.
+
+### OpenAPI
+
+`GET /api/v1/openapi` — contrat machine-readable (importable dans Postman / codegen).
 
 ## Deploy
 

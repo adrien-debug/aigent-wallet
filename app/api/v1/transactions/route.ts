@@ -1,4 +1,5 @@
 import { transactions } from "@/data/transactions";
+import { paginateSlice, parsePagination } from "@/lib/api/pagination";
 import { filterTransactions, parseTransactionStatus } from "@/lib/api/transactions-query";
 import { jsonErr, jsonOk } from "@/lib/api/response";
 
@@ -9,7 +10,7 @@ export function GET(request: Request) {
   if (parsed === null) {
     return jsonErr(400, "invalid_status", "Invalid status filter.", {
       status: statusRaw ?? "",
-    });
+    }, request);
   }
   const q = searchParams.get("q") ?? undefined;
   const walletId = searchParams.get("walletId") ?? undefined;
@@ -18,9 +19,11 @@ export function GET(request: Request) {
     status: parsed,
     walletId: walletId || undefined,
   });
+  const { limit, offset } = parsePagination(searchParams);
+  const { slice, meta } = paginateSlice(filtered, limit, offset);
   return jsonOk({
-    transactions: filtered,
-    count: filtered.length,
-    total: transactions.length,
-  });
+    transactions: slice,
+    pagination: meta,
+    sourceTotal: transactions.length,
+  }, { request });
 }

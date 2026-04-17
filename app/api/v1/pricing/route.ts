@@ -1,6 +1,6 @@
 import { pricingPlans } from "@/data/pricing";
 import { jsonOk } from "@/lib/api/response";
 
-export function GET() {
-  return jsonOk({ plans: pricingPlans, count: pricingPlans.length });
+export function GET(request: Request) {
+  return jsonOk({ plans: pricingPlans, count: pricingPlans.length }, { request });
 }
