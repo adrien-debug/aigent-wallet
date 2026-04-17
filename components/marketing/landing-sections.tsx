@@ -57,10 +57,11 @@ export function LandingSections() {
             {/* Block 1: White Background, Massive Typography */}
             <div className="group relative flex min-h-[500px] flex-col justify-between overflow-hidden rounded-[3rem] bg-white p-10 transition-transform hover:-translate-y-1 lg:p-16">
               <div>
-                <h3 className="text-balance text-4xl font-medium tracking-tight text-black sm:text-5xl lg:text-6xl lg:leading-[1.1]">
-                  Build to run the future of work
+                <h3 className="text-balance text-5xl font-medium tracking-tighter text-black sm:text-6xl lg:text-7xl lg:leading-[0.95]">
+                  Build to run the <br className="hidden lg:block" />
+                  future of work
                 </h3>
-                <p className="mt-6 max-w-md text-lg text-black/60 sm:text-xl">
+                <p className="mt-8 max-w-md text-xl text-black/60 sm:text-2xl">
                   Author policies once, version them like services, and shadow-test
                   against live traffic before enforcement.
                 </p>
@@ -79,10 +80,10 @@ export function LandingSections() {
             {/* Block 2: Black Background, Tall */}
             <div className="group relative flex min-h-[500px] flex-col justify-between overflow-hidden rounded-[3rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 lg:p-16">
               <div>
-                <h3 className="text-balance text-4xl font-medium tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]">
+                <h3 className="text-balance text-5xl font-medium tracking-tighter text-white sm:text-6xl lg:text-7xl lg:leading-[0.95]">
                   The foundation
                 </h3>
-                <p className="mt-6 text-lg text-white/60 sm:text-xl">
+                <p className="mt-8 max-w-md text-xl text-white/60 sm:text-2xl">
                   Burst-aware smoothing for GPU and data workloads. Machine payments
                   that don't block execution.
                 </p>
