@@ -24,10 +24,8 @@ export function PageHero({ src, alt, maxHeight = "max-h-[420px]" }: PageHeroProp
         priority
         quality={90}
       />
-      {/* top-to-bottom fade: transparent → page background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/20 to-background" />
-      {/* subtle side vignette */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+      {/* Light bottom fade only — no side vignette (was muddying the page). */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
     </div>
   );
 }

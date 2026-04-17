@@ -16,7 +16,7 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md",
+        "sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur-sm",
         className,
       )}
     >
