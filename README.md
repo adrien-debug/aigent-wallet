@@ -4,7 +4,7 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 
 ## Scripts
 
-- `npm run dev` — local dev server
+- `npm run dev` — local dev server sur **http://localhost:9000** (port fixé dans `package.json`). En dev, le CSP autorise `unsafe-eval` + WebSocket pour Next/HMR ; en prod les en-têtes restent stricts.
 - `npm run build` — production build
 - `npm run start` — serve production build
 - `npm run lint` — ESLint
