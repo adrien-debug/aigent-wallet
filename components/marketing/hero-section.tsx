@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { RequestAccessDialog } from "@/components/marketing/request-access-dialog";
 import { formatNumber, formatUsd } from "@/lib/utils";
 import { dashboardMetrics } from "@/data/metrics";
+import { getConsoleEntryHref } from "@/lib/supabase/env";
 
 export function HeroSection() {
   const reduce = useReducedMotion();
@@ -43,7 +44,7 @@ export function HeroSection() {
           <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
             <RequestAccessDialog />
             <Button variant="outline" asChild>
-              <Link href="/app">
+              <Link href={getConsoleEntryHref()}>
                 View demo
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
               </Link>

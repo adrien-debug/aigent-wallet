@@ -8,7 +8,7 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 - `npm run build` — production build
 - `npm run start` — serve production build
 - `npm run lint` — ESLint
-- `npm run test` — Vitest (`lib/api/*.test.ts`)
+- `npm run test` — Vitest (`lib/api/*.test.ts`, `lib/supabase/*.test.ts`)
 - `npm run format` / `npm run format:check` — Prettier
 
 ## Structure
@@ -25,14 +25,21 @@ Data is mostly mock; API v1 can persist POSTs in memory on the instance.
 
 ## Supabase (optional)
 
-When `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set (see `.env.example`), middleware refreshes the auth session and `GET /auth/callback` exchanges OAuth / magic-link `code` for session cookies.
+When `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set (see `.env.example`):
+
+- Middleware refreshes the session; **`/app` and `/app/*` require a signed-in user** (redirect to `/login`).
+- **`/login`** — email magic link (`signInWithOtp`).
+- **`GET /auth/callback`** — exchanges OAuth / magic-link `code` for session cookies (optional query `next` must be a safe relative path).
+- **`GET` or `POST /auth/signout`** — ends the session and redirects to `/login`.
+
+Without these env vars, the marketing CTAs open **`/app` directly** (demo session label in the console top bar).
 
 **Redirect URL (Supabase Dashboard → Authentication → URL configuration):**
 
 - Local: `http://localhost:3000/auth/callback`
 - Production: `https://<your-domain>/auth/callback`
 
-**Preview / branching:** on Vercel, map **Preview** environment variables to a Supabase **branch** (or separate project) URL and anon key so preview deployments do not hit production auth. The dashboard UI is not yet gated on session; this is infrastructure for future auth.
+**Preview / branching:** on Vercel, map **Preview** environment variables to a Supabase **branch** (or separate project) URL and anon key so preview deployments do not hit production auth.
 
 ## API (v1)
 

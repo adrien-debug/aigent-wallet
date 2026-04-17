@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { developerSnippets } from "@/data/developer-snippets";
+import { getConsoleEntryHref } from "@/lib/supabase/env";
 
 export const metadata: Metadata = {
   title: "Developers",
@@ -69,7 +70,7 @@ export default function DevelopersPage() {
         </FadeInView>
         <FadeInView className="mt-12 flex flex-wrap gap-3">
           <Button asChild>
-            <Link href="/app">Open sandbox console</Link>
+            <Link href={getConsoleEntryHref()}>Open sandbox console</Link>
           </Button>
           <Button variant="outline" asChild>
             <Link href="/pricing">View pricing</Link>

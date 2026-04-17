@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PRODUCT_NAME } from "@/lib/constants";
+import { getConsoleEntryHref } from "@/lib/supabase/env";
 
 export function Footer() {
   return (
@@ -46,7 +47,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/app" className="hover:text-foreground">
+                <Link href={getConsoleEntryHref()} className="hover:text-foreground">
                   Demo console
                 </Link>
               </li>

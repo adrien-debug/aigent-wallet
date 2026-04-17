@@ -10,3 +10,8 @@ export function getSupabasePublicConfig(): SupabasePublicConfig | null {
   if (!url || !anonKey) return null;
   return { url, anonKey };
 }
+
+/** Lien vers la console : login si Supabase est configuré, sinon accès direct démo. */
+export function getConsoleEntryHref(): string {
+  return getSupabasePublicConfig() ? "/login?next=/app" : "/app";
+}

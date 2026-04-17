@@ -2,6 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { getSupabasePublicConfig } from "@/lib/supabase/env";
+import { safeNextPath } from "@/lib/supabase/routes";
 
 /**
  * OAuth / magic link : échange du `code` contre une session (cookies).
@@ -17,7 +18,7 @@ export async function GET(request: Request) {
 
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
-  const nextPath = url.searchParams.get("next") ?? "/app";
+  const nextPath = safeNextPath(url.searchParams.get("next"), "/app");
 
   if (!code) {
     return NextResponse.redirect(new URL("/?error=missing_code", url.origin));

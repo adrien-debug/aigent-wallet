@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { handleApiV1Edge } from "@/lib/api/edge-middleware";
 import { getSupabasePublicConfig } from "@/lib/supabase/env";
 import { updateSupabaseSession } from "@/lib/supabase/middleware";
+import { isDashboardPath, safeNextPath } from "@/lib/supabase/routes";
 
 function isApiV1Path(pathname: string) {
   return pathname === "/api/v1" || pathname.startsWith("/api/v1/");
@@ -19,11 +20,27 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (getSupabasePublicConfig()) {
-    return updateSupabaseSession(request);
+  if (!getSupabasePublicConfig()) {
+    return NextResponse.next();
   }
 
-  return NextResponse.next();
+  const { response, user } = await updateSupabaseSession(request);
+
+  if (isDashboardPath(pathname) && !user) {
+    const login = new URL("/login", request.url);
+    login.searchParams.set("next", safeNextPath(pathname, "/app"));
+    return NextResponse.redirect(login);
+  }
+
+  if (pathname === "/login" && user) {
+    const next = safeNextPath(
+      request.nextUrl.searchParams.get("next") ?? undefined,
+      "/app",
+    );
+    return NextResponse.redirect(new URL(next, request.url));
+  }
+
+  return response;
 }
 
 export const config = {

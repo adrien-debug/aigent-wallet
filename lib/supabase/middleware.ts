@@ -1,15 +1,23 @@
 import { createServerClient } from "@supabase/ssr";
+import type { User } from "@supabase/supabase-js";
 import { type NextRequest, NextResponse } from "next/server";
 import { getSupabasePublicConfig } from "@/lib/supabase/env";
+
+export type SupabaseSessionResult = {
+  response: NextResponse;
+  user: User | null;
+};
 
 /**
  * Rafraîchit la session Auth (cookies). À exécuter sur les routes « pages », pas sur `/api/v1`.
  * @see https://supabase.com/docs/guides/auth/server-side/nextjs
  */
-export async function updateSupabaseSession(request: NextRequest) {
+export async function updateSupabaseSession(
+  request: NextRequest,
+): Promise<SupabaseSessionResult> {
   const cfg = getSupabasePublicConfig();
   if (!cfg) {
-    return NextResponse.next({ request });
+    return { response: NextResponse.next({ request }), user: null };
   }
 
   let supabaseResponse = NextResponse.next({ request });
@@ -30,7 +38,9 @@ export async function updateSupabaseSession(request: NextRequest) {
     },
   });
 
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  return supabaseResponse;
+  return { response: supabaseResponse, user };
 }
