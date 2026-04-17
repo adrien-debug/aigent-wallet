@@ -1,3 +1,4 @@
+/** Store append-only en mémoire process (voir README — serverless cold start). */
 import type { PolicyRule, Wallet } from "@/types";
 import { wallets as seedWallets } from "@/data/wallets";
 import { policies as seedPolicies } from "@/data/policies";

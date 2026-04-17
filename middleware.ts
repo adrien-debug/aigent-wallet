@@ -1,6 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { enforceApiKey } from "@/lib/api/auth";
+import { stampApiResponse } from "@/lib/api/stamp-response";
 
 export function middleware(request: NextRequest) {
   const requestId = crypto.randomUUID();
@@ -13,16 +14,7 @@ export function middleware(request: NextRequest) {
     corsOrigin && browserOrigin && browserOrigin === corsOrigin,
   );
 
-  function withCors(res: NextResponse) {
-    res.headers.set("x-request-id", requestId);
-    if (allowCors) {
-      res.headers.set("Access-Control-Allow-Origin", corsOrigin!);
-      res.headers.set("Access-Control-Allow-Credentials", "true");
-    }
-    return res;
-  }
-
-  if (request.method === "OPTIONS" && allowCors) {
+  if (request.method === "OPTIONS" && allowCors && corsOrigin) {
     const res = new NextResponse(null, { status: 204 });
     res.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     res.headers.set(
@@ -30,18 +22,18 @@ export function middleware(request: NextRequest) {
       "Authorization, Content-Type, x-request-id",
     );
     res.headers.set("Access-Control-Max-Age", "86400");
-    return withCors(res);
+    return stampApiResponse(res, requestId, true, corsOrigin);
   }
 
   const auth = enforceApiKey(request);
   if (auth) {
-    return withCors(auth);
+    return stampApiResponse(auth, requestId, allowCors, corsOrigin);
   }
 
   const res = NextResponse.next({
     request: { headers: requestHeaders },
   });
-  return withCors(res);
+  return stampApiResponse(res, requestId, allowCors, corsOrigin);
 }
 
 export const config = {

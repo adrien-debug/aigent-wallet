@@ -1,3 +1,5 @@
+import { TX_DEFAULT_LIMIT, TX_MAX_LIMIT } from "@/lib/api/constants";
+
 export type PaginationMeta = {
   limit: number;
   offset: number;
@@ -11,11 +13,11 @@ export function parsePagination(searchParams: URLSearchParams): {
 } {
   const rawLimit = searchParams.get("limit");
   const rawOffset = searchParams.get("offset");
-  const limitParsed = parseInt(rawLimit ?? "50", 10);
+  const limitParsed = parseInt(rawLimit ?? String(TX_DEFAULT_LIMIT), 10);
   const offsetParsed = parseInt(rawOffset ?? "0", 10);
   const limit = Number.isFinite(limitParsed)
-    ? Math.min(Math.max(limitParsed, 1), 200)
-    : 50;
+    ? Math.min(Math.max(limitParsed, 1), TX_MAX_LIMIT)
+    : TX_DEFAULT_LIMIT;
   const offset = Number.isFinite(offsetParsed) ? Math.max(offsetParsed, 0) : 0;
   return { limit, offset };
 }

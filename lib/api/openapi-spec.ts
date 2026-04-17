@@ -1,9 +1,11 @@
-/** OpenAPI 3.0 — contract for `/api/v1` (hand-maintained). */
+import { API_VERSION } from "@/lib/api/constants";
+
+/** OpenAPI 3.0 — contract for `/api/v1` (maintenu à la main, version alignée sur `API_VERSION`). */
 export const openApiDocument = {
   openapi: "3.0.3",
   info: {
     title: "Aigent Console API",
-    version: "1.1.0",
+    version: API_VERSION,
     description:
       "Mock control plane for agent treasuries. Set AIGENT_API_KEY and send Authorization: Bearer.",
   },

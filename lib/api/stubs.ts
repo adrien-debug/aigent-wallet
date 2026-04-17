@@ -1,3 +1,9 @@
+import {
+  NETWORK_IDS,
+  POLICY_SEVERITY_VALUES,
+  POLICY_STATUS_VALUES,
+  WALLET_TYPES,
+} from "@/lib/api/constants";
 import type { NetworkId, PolicyRule, Wallet, WalletType } from "@/types";
 
 function randomHexAddress(): string {
@@ -6,9 +12,6 @@ function randomHexAddress(): string {
   const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
   return `0x${hex}`;
 }
-
-const WALLET_TYPES: WalletType[] = ["treasury", "agent", "execution", "research"];
-const NETWORKS: NetworkId[] = ["ethereum", "arbitrum", "base", "polygon"];
 
 export function buildStubWallet(input: {
   name: string;
@@ -62,20 +65,23 @@ export function buildStubPolicy(input: {
 }
 
 export function isWalletType(v: unknown): v is WalletType {
-  return typeof v === "string" && (WALLET_TYPES as string[]).includes(v);
+  return typeof v === "string" && (WALLET_TYPES as readonly string[]).includes(v);
 }
 
 export function isNetworkId(v: unknown): v is NetworkId {
-  return typeof v === "string" && (NETWORKS as string[]).includes(v);
+  return typeof v === "string" && (NETWORK_IDS as readonly string[]).includes(v);
 }
 
 export function isPolicySeverity(v: unknown): v is PolicyRule["severity"] {
   return (
     typeof v === "string" &&
-    ["info", "low", "medium", "high", "critical"].includes(v)
+    (POLICY_SEVERITY_VALUES as readonly string[]).includes(v)
   );
 }
 
 export function isPolicyStatus(v: unknown): v is PolicyRule["status"] {
-  return typeof v === "string" && ["enforced", "shadow", "draft"].includes(v);
+  return (
+    typeof v === "string" &&
+    (POLICY_STATUS_VALUES as readonly string[]).includes(v)
+  );
 }

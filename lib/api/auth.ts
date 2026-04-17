@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { apiLogError } from "@/lib/api/log";
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 const UNAUTHORIZED_BODY = {
   ok: false as const,
@@ -10,9 +11,8 @@ const UNAUTHORIZED_BODY = {
 };
 
 /**
- * When `AIGENT_API_KEY` is set, all `/api/v1/*` requests must send
- * `Authorization: Bearer <same value>`.
- * When unset, requests are allowed (local dev only); a warning is logged once per isolate.
+ * Quand `AIGENT_API_KEY` est défini : `Authorization: Bearer <même valeur>`.
+ * Sans clé : accès ouvert (dev) + un seul avertissement par isolate.
  */
 export function enforceApiKey(request: NextRequest): NextResponse | null {
   const expected = process.env.AIGENT_API_KEY?.trim();
@@ -28,19 +28,13 @@ export function enforceApiKey(request: NextRequest): NextResponse | null {
 
   const header = request.headers.get("authorization");
   if (!header?.startsWith("Bearer ")) {
-    console.error(
-      "[api]",
-      JSON.stringify({ code: "unauthorized", httpStatus: 401, reason: "missing_bearer" }),
-    );
+    apiLogError("unauthorized", 401, { reason: "missing_bearer" });
     return NextResponse.json(UNAUTHORIZED_BODY, { status: 401 });
   }
 
   const token = header.slice("Bearer ".length).trim();
   if (!token || token !== expected) {
-    console.error(
-      "[api]",
-      JSON.stringify({ code: "unauthorized", httpStatus: 401, reason: "invalid_token" }),
-    );
+    apiLogError("unauthorized", 401, { reason: "invalid_token" });
     return NextResponse.json(UNAUTHORIZED_BODY, { status: 401 });
   }
 

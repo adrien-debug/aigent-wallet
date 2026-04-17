@@ -1,11 +1,8 @@
+import { apiLogError } from "@/lib/api/log";
+import type { ApiErrorBody, ApiSuccess } from "@/types/api";
 import { NextResponse } from "next/server";
 
-export type ApiSuccess<T> = { ok: true; data: T };
-export type ApiErrorBody = {
-  ok: false;
-  error: { code: string; message: string };
-  requestId?: string;
-};
+export type { ApiErrorBody, ApiSuccess } from "@/types/api";
 
 export function jsonOk<T>(
   data: T,
@@ -31,15 +28,7 @@ export function jsonErr(
         Object.entries(logContext).filter(([, v]) => v !== undefined),
       ) as Record<string, string | number>
     : undefined;
-  console.error(
-    "[api]",
-    JSON.stringify({
-      code,
-      httpStatus: status,
-      ...(rid ? { requestId: rid } : {}),
-      ...(safe ?? {}),
-    }),
-  );
+  apiLogError(code, status, { ...safe, requestId: rid });
   const body: ApiErrorBody = {
     ok: false,
     error: { code, message },

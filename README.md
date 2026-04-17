@@ -23,7 +23,9 @@ No real backend or keys; UI is illustrative.
 
 ## API (v1)
 
-Base: `/api/v1`. Découverte: `GET /api/v1` (liste des routes).
+Base: `/api/v1`. Découverte: `GET /api/v1` (liste des routes). Version affichée = `API_VERSION` dans `lib/api/constants.ts` (alignée OpenAPI + discovery).
+
+**Code:** couche `lib/api/*` (réponses, validation, pagination, auth middleware, catalogue d’endpoints, types `types/api.ts`).
 
 | Méthode | Route | Description |
 |--------|--------|--------------|
@@ -31,7 +33,7 @@ Base: `/api/v1`. Découverte: `GET /api/v1` (liste des routes).
 | GET | `/api/v1/wallets` | Liste des wallets (seed + mémoire) |
 | POST | `/api/v1/wallets` | Créer un wallet (mémoire) |
 | GET | `/api/v1/wallets/:id` | Détail wallet |
-| GET | `/api/v1/transactions` | `?status=…`, `?q=`, `?walletId=`, `?limit=` (max 200), `?offset=` |
+| GET | `/api/v1/transactions` | `?status=…`, `?q=`, `?walletId=`, `?limit=` (max via `TX_MAX_LIMIT`), `?offset=` |
 | GET | `/api/v1/openapi` | Spécification **OpenAPI 3** (JSON) |
 | GET | `/api/v1/policies` | Liste des policies (seed + mémoire) |
 | POST | `/api/v1/policies` | Créer une policy (mémoire) |
