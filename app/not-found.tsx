@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MarketingBackground } from "@/components/marketing/background";
+import { getConsoleEntryHref } from "@/lib/supabase/env";
 
 export default function NotFound() {
   return (
@@ -26,7 +27,7 @@ export default function NotFound() {
             </Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link href="/app">Console</Link>
+            <Link href={getConsoleEntryHref()}>Console</Link>
           </Button>
         </div>
       </div>

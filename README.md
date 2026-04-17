@@ -8,7 +8,7 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 - `npm run build` — production build
 - `npm run start` — serve production build
 - `npm run lint` — ESLint
-- `npm run test` — Vitest (`lib/api/*.test.ts`)
+- `npm run test` — Vitest (`lib/api/*.test.ts`, `lib/supabase/*.test.ts`)
 - `npm run format` / `npm run format:check` — Prettier
 
 ## Structure
@@ -19,9 +19,27 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 - `data` — mock datasets
 - `lib`, `types`
 
-No real backend or keys; UI is illustrative.
+Data is mostly mock; API v1 can persist POSTs in memory on the instance.
 
 **Health:** `GET /api/health` — JSON probe for uptime monitors.
+
+## Supabase (optional)
+
+When `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set (see `.env.example`):
+
+- Middleware refreshes the session; **`/app` and `/app/*` require a signed-in user** (redirect to `/login`).
+- **`/login`** — email magic link (`signInWithOtp`).
+- **`GET /auth/callback`** — exchanges OAuth / magic-link `code` for session cookies (optional query `next` must be a safe relative path).
+- **`GET` or `POST /auth/signout`** — ends the session and redirects to `/login`.
+
+Without these env vars, the marketing CTAs open **`/app` directly** (demo session label in the console top bar).
+
+**Redirect URL (Supabase Dashboard → Authentication → URL configuration):**
+
+- Local: `http://localhost:3000/auth/callback`
+- Production (Railway): `https://aigent-web-production.up.railway.app/auth/callback`
+
+**Preview / branching:** map **Preview** environment variables to a Supabase **branch** (or separate project) URL and anon key so preview deployments do not hit production auth.
 
 ## API (v1)
 
@@ -71,6 +89,13 @@ Sans variable d’environnement, l’API reste ouverte (warning en logs) — pra
 ## Deploy
 
 - **GitHub:** https://github.com/adrien-debug/aigent-wallet
-- **Production (Vercel):** https://aigent-wallet.vercel.app
+- **Production (Railway):** https://aigent-web-production.up.railway.app
+- **Supabase project:** `bwfkvpncgzybglultpsx` (eu-west-1) — [Dashboard](https://supabase.com/dashboard/project/bwfkvpncgzybglultpsx)
 
-Git → Vercel : le projet est lié au dépôt ; chaque push sur `main` redéploie.
+### Railway
+
+Projet : `aigent-wallet` / service `aigent-web`. Déploiement via `railway up` (ou GitHub push si connecté). Variables d'env configurées dans Railway (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `PORT=3000`).
+
+### Supabase
+
+Config locale dans `supabase/config.toml`. Pousser les changements auth/API : `supabase config push`. Redirect URLs configurées pour `localhost:3000` + Railway.

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Bell, ChevronDown } from "lucide-react";
 import { ENVIRONMENTS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
@@ -22,7 +23,10 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { CommandPalette } from "@/components/dashboard/command-palette";
 import { TopbarBreadcrumbs } from "@/components/dashboard/topbar-breadcrumbs";
 
-export function Topbar() {
+export function Topbar({ userEmail }: { userEmail: string | null }) {
+  const displayName = userEmail ?? "Elena Vasquez";
+  const isDemoSession = !userEmail;
+
   return (
     <header className="flex h-16 items-center gap-3 border-b border-border/60 bg-background/70 px-4 backdrop-blur sm:px-6">
       <div className="flex min-w-0 flex-1 items-center gap-4">
@@ -50,16 +54,33 @@ export function Topbar() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="gap-2 px-3">
-              <span className="hidden text-sm sm:inline">Elena Vasquez</span>
+              <span className="hidden max-w-[200px] truncate text-sm sm:inline">
+                {displayName}
+              </span>
               <ChevronDown className="h-4 w-4 opacity-60" aria-hidden />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuLabel>Session</DropdownMenuLabel>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>API tokens</DropdownMenuItem>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuLabel>
+              Session
+              {isDemoSession ? (
+                <span className="mt-0.5 block text-xs font-normal text-muted-foreground">
+                  Demo (no Supabase)
+                </span>
+              ) : null}
+            </DropdownMenuLabel>
+            <DropdownMenuItem disabled>Profile</DropdownMenuItem>
+            <DropdownMenuItem disabled>API tokens</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Sign out</DropdownMenuItem>
+            {userEmail ? (
+              <DropdownMenuItem asChild>
+                <Link href="/auth/signout" prefetch={false}>
+                  Sign out
+                </Link>
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem disabled>Sign out</DropdownMenuItem>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

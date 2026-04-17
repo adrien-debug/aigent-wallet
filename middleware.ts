@@ -1,41 +1,56 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { enforceApiKey } from "@/lib/api/auth";
-import { stampApiResponse } from "@/lib/api/stamp-response";
+import { handleApiV1Edge } from "@/lib/api/edge-middleware";
+import { getSupabasePublicConfig } from "@/lib/supabase/env";
+import { updateSupabaseSession } from "@/lib/supabase/middleware";
+import { isDashboardPath, safeNextPath } from "@/lib/supabase/routes";
 
-export function middleware(request: NextRequest) {
-  const requestId = crypto.randomUUID();
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-request-id", requestId);
+function isApiV1Path(pathname: string) {
+  return pathname === "/api/v1" || pathname.startsWith("/api/v1/");
+}
 
-  const corsOrigin = process.env.AIGENT_CORS_ORIGIN?.trim();
-  const browserOrigin = request.headers.get("origin");
-  const allowCors = Boolean(
-    corsOrigin && browserOrigin && browserOrigin === corsOrigin,
-  );
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
-  if (request.method === "OPTIONS" && allowCors && corsOrigin) {
-    const res = new NextResponse(null, { status: 204 });
-    res.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.headers.set(
-      "Access-Control-Allow-Headers",
-      "Authorization, Content-Type, x-request-id",
+  if (isApiV1Path(pathname)) {
+    return handleApiV1Edge(request);
+  }
+
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
+
+  if (!getSupabasePublicConfig()) {
+    return NextResponse.next();
+  }
+
+  const { response, user } = await updateSupabaseSession(request);
+
+  if (isDashboardPath(pathname) && !user) {
+    const login = new URL("/login", request.url);
+    login.searchParams.set("next", safeNextPath(pathname, "/app"));
+    return NextResponse.redirect(login);
+  }
+
+  if (pathname === "/login" && user) {
+    const next = safeNextPath(
+      request.nextUrl.searchParams.get("next") ?? undefined,
+      "/app",
     );
-    res.headers.set("Access-Control-Max-Age", "86400");
-    return stampApiResponse(res, requestId, true, corsOrigin);
+    return NextResponse.redirect(new URL(next, request.url));
   }
 
-  const auth = enforceApiKey(request);
-  if (auth) {
-    return stampApiResponse(auth, requestId, allowCors, corsOrigin);
-  }
-
-  const res = NextResponse.next({
-    request: { headers: requestHeaders },
-  });
-  return stampApiResponse(res, requestId, allowCors, corsOrigin);
+  return response;
 }
 
 export const config = {
-  matcher: ["/api/v1", "/api/v1/:path*"],
+  matcher: [
+    "/api/v1",
+    "/api/v1/:path*",
+    /*
+     * Pages + auth : exclut assets statiques.
+     * /api/health et autres /api/* hors v1 : court-circuités dans le handler.
+     */
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+  ],
 };

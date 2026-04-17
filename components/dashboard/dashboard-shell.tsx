@@ -7,7 +7,13 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { SidebarNav } from "@/components/dashboard/sidebar-nav";
 import { Topbar } from "@/components/dashboard/topbar";
 
-export function DashboardShell({ children }: { children: React.ReactNode }) {
+export function DashboardShell({
+  children,
+  userEmail,
+}: {
+  children: React.ReactNode;
+  userEmail: string | null;
+}) {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <div className="flex min-h-screen bg-background">
@@ -28,7 +34,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           </Sheet>
           <span className="text-sm font-semibold">Console</span>
         </div>
-        <Topbar />
+        <Topbar userEmail={userEmail} />
         <main className="flex-1 px-4 py-8 sm:px-6 lg:px-8">{children}</main>
       </div>
     </div>

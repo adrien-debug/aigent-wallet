@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { PRODUCT_NAME, MARKETING_NAV } from "@/lib/constants";
+import { getConsoleEntryHref } from "@/lib/supabase/env";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -40,7 +41,7 @@ export function Navbar({ className }: { className?: string }) {
         <div className="flex items-center gap-2">
           <ThemeToggle className="hidden sm:inline-flex" />
           <Button variant="ghost" className="hidden sm:inline-flex" asChild>
-            <Link href="/app">View demo</Link>
+            <Link href={getConsoleEntryHref()}>View demo</Link>
           </Button>
           <RequestAccessDialog />
           <Sheet open={open} onOpenChange={setOpen}>
@@ -67,7 +68,7 @@ export function Navbar({ className }: { className?: string }) {
                   </Link>
                 ))}
                 <Link
-                  href="/app"
+                  href={getConsoleEntryHref()}
                   onClick={() => setOpen(false)}
                   className="text-sm font-medium text-primary"
                 >
