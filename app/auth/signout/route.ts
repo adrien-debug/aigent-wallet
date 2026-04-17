@@ -32,10 +32,10 @@ async function signOut(request: Request) {
   return NextResponse.redirect(new URL("/login", request.url));
 }
 
-export async function GET(request: Request) {
-  return signOut(request);
-}
-
+/**
+ * POST only — protects against CSRF logouts triggered by third-party `<img>` /
+ * link prefetch. The dropdown menu submits a same-origin form to this route.
+ */
 export async function POST(request: Request) {
   return signOut(request);
 }

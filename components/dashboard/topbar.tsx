@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Bell, ChevronDown } from "lucide-react";
 import { ENVIRONMENTS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
@@ -73,11 +72,13 @@ export function Topbar({ userEmail }: { userEmail: string | null }) {
             <DropdownMenuItem disabled>API tokens</DropdownMenuItem>
             <DropdownMenuSeparator />
             {userEmail ? (
-              <DropdownMenuItem asChild>
-                <Link href="/auth/signout" prefetch={false}>
-                  Sign out
-                </Link>
-              </DropdownMenuItem>
+              <form action="/auth/signout" method="post">
+                <DropdownMenuItem asChild>
+                  <button type="submit" className="w-full cursor-pointer">
+                    Sign out
+                  </button>
+                </DropdownMenuItem>
+              </form>
             ) : (
               <DropdownMenuItem disabled>Sign out</DropdownMenuItem>
             )}

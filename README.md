@@ -9,6 +9,7 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 - `npm run start` — serve production build
 - `npm run lint` — ESLint
 - `npm run test` — Vitest (`lib/api/*.test.ts`, `lib/supabase/*.test.ts`)
+- `npm run test:e2e` — Playwright (smoke + auth guards). First run: `npm run test:e2e:install`.
 - `npm run format` / `npm run format:check` — Prettier
 
 ## Structure
@@ -30,7 +31,7 @@ When `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set (see
 - Middleware refreshes the session; **`/app` and `/app/*` require a signed-in user** (redirect to `/login`).
 - **`/login`** — email magic link (`signInWithOtp`).
 - **`GET /auth/callback`** — exchanges OAuth / magic-link `code` for session cookies (optional query `next` must be a safe relative path).
-- **`GET` or `POST /auth/signout`** — ends the session and redirects to `/login`.
+- **`POST /auth/signout`** — ends the session and redirects to `/login` (POST-only to block CSRF; topbar uses a same-origin form).
 
 Without these env vars, the marketing CTAs open **`/app` directly** (demo session label in the console top bar).
 
@@ -106,3 +107,13 @@ Projet : `aigent-wallet` / service `aigent-web`. Variables d'env configurées da
 ### Supabase
 
 Config locale dans `supabase/config.toml`. Pousser les changements auth/API : `supabase config push`. Redirect URLs configurées pour `localhost:3000` + Railway.
+
+**Migrations** (`supabase/migrations/`) — schéma `profiles` (1:1 `auth.users`) + tables `wallets` / `policies` / `transactions` avec **RLS owner-only** (`auth.uid() = user_id`). Appliquer : `supabase db push`. Le trigger `on_auth_user_created` provisionne automatiquement `public.profiles` à l'inscription.
+
+## Sécurité
+
+- **Headers** (`next.config.mjs`) : HSTS 2 ans, CSP self + Supabase, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` minimal, `X-Content-Type-Options: nosniff`.
+- **Sign-out** POST-only (CSRF).
+- **API v1** Bearer obligatoire en prod (`AIGENT_API_KEY`).
+- **Dependabot** (`.github/dependabot.yml`) — PRs hebdo (npm groupés Next/Radix/Vitest/types + GitHub Actions).
+- **Healthcheck Railway** — `GET /api/health`, restart `ON_FAILURE` x3 (`railway.toml`).
