@@ -107,11 +107,9 @@ export function HeroSection() {
                         </svg>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white">
-                          DeFi Trader Alpha
-                        </p>
+                        <p className="text-sm font-medium text-white">Compute Broker</p>
                         <p className="font-mono text-[10px] text-white/40">
-                          0x7a2...4f9c
+                          base: 0xc1d...f6a7
                         </p>
                       </div>
                     </div>
@@ -135,9 +133,11 @@ export function HeroSection() {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-white">
-                          AWS Provisioner
+                          Market Data Agent
                         </p>
-                        <p className="font-mono text-[10px] text-white/40">us-east-1</p>
+                        <p className="font-mono text-[10px] text-white/40">
+                          arbitrum: 0xb3c...e4f5
+                        </p>
                       </div>
                     </div>
                     <div className="h-2 w-2 rounded-full bg-white/40" />
@@ -159,11 +159,9 @@ export function HeroSection() {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-white/60">
-                          Data Scraper
+                          Trading Execution
                         </p>
-                        <p className="font-mono text-[10px] text-white/30">
-                          POLICY_BREACH
-                        </p>
+                        <p className="font-mono text-[10px] text-white/30">PAUSED</p>
                       </div>
                     </div>
                     <div className="h-2 w-2 rounded-full bg-white/20" />
@@ -223,7 +221,7 @@ export function HeroSection() {
                 <div className="flex flex-col lg:h-1/2">
                   <div className="border-b border-white/5 px-8 py-4">
                     <p className="text-xs font-medium uppercase tracking-widest text-white/40">
-                      Recent Intents
+                      Recent Transactions
                     </p>
                   </div>
                   <div className="flex-1 overflow-y-auto p-4 px-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -231,19 +229,21 @@ export function HeroSection() {
                       <thead>
                         <tr className="border-b border-white/5 text-white/40">
                           <th className="pb-3 font-medium">Agent</th>
-                          <th className="pb-3 font-medium">Action</th>
+                          <th className="pb-3 font-medium">Counterparty</th>
                           <th className="pb-3 font-medium text-right">Amount</th>
                           <th className="pb-3 font-medium text-right">Status</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-white/5">
                         <tr>
-                          <td className="py-4 font-medium text-white">DeFi Trader</td>
+                          <td className="py-4 font-medium text-white">
+                            Compute Broker
+                          </td>
                           <td className="py-4 font-mono text-xs text-white/60">
-                            swap_usdc_eth
+                            CoreWeave Settlement
                           </td>
                           <td className="py-4 text-right font-mono text-white">
-                            -$12,450.00
+                            12,400 USDC
                           </td>
                           <td className="py-4 text-right">
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-medium text-white">
@@ -256,19 +256,19 @@ export function HeroSection() {
                               >
                                 <polyline points="20 6 9 17 4 12" />
                               </svg>{" "}
-                              APPROVED
+                              CONFIRMED
                             </span>
                           </td>
                         </tr>
                         <tr>
                           <td className="py-4 font-medium text-white/60">
-                            Data Scraper
+                            Trading Exec
                           </td>
                           <td className="py-4 font-mono text-xs text-white/40">
-                            pay_proxy_api
+                            0xUnk…9f01
                           </td>
                           <td className="py-4 text-right font-mono text-white/60">
-                            -$4,200.00
+                            92,000 USDC
                           </td>
                           <td className="py-4 text-right">
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/5 bg-white/[0.02] px-2 py-0.5 text-[10px] font-medium text-white/40">
@@ -287,14 +287,12 @@ export function HeroSection() {
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-4 font-medium text-white">
-                            AWS Provisioner
-                          </td>
+                          <td className="py-4 font-medium text-white">Market Data</td>
                           <td className="py-4 font-mono text-xs text-white/60">
-                            topup_billing
+                            Chainlink Aggregator
                           </td>
                           <td className="py-4 text-right font-mono text-white">
-                            -$850.00
+                            820 ETH
                           </td>
                           <td className="py-4 text-right">
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-medium text-white">
@@ -307,7 +305,7 @@ export function HeroSection() {
                               >
                                 <polyline points="20 6 9 17 4 12" />
                               </svg>{" "}
-                              APPROVED
+                              CONFIRMED
                             </span>
                           </td>
                         </tr>
@@ -350,28 +348,32 @@ export function HeroSection() {
                       </span>
                     </div>
                     <pre className="font-mono text-[10px] leading-relaxed text-white/60">
-                      <span className="text-white/40">// intent_id: req_9x2a</span>
+                      <span className="text-white/40">// tx_hash: 0x88aa…3312</span>
                       <br />
                       {`{
-  "agent": "data_scraper",
-  "action": "pay_proxy_api",
-  "amount": 4200.00,
+  "wallet": "Trading Execution",
+  "counterparty": "0xUnk…9f01",
+  "amount_usd": 92000.00,
   "eval": [
     {
-      "rule": "known_vendor",
-      "pass": true
+      "policy": "pol_human_above",
+      "threshold": 75000,
+      "pass": false,
+      "action": "require_approval"
     },
     {
-      "rule": "daily_limit",
-      "val": 4200,
-      "max": 1000,
+      "policy": "pol_block_unknown",
+      "risk_tier": "unknown",
       `}
                       <span className="text-primary font-medium">"pass": false</span>
-                      {`
+                      {`,
+      "action": "deny"
     }
   ],
   `}
-                      <span className="text-primary font-medium">"result": "DENY"</span>
+                      <span className="text-primary font-medium">
+                        "result": "BLOCKED"
+                      </span>
                       {`
 }`}
                     </pre>
@@ -379,16 +381,18 @@ export function HeroSection() {
 
                   <div className="mt-6 rounded-xl border border-white/5 bg-white/[0.02] p-4">
                     <p className="text-xs font-medium text-white/40 mb-2">
-                      Risk Engine
+                      Anomaly Score
                     </p>
                     <div className="flex items-end gap-2">
                       <span className="font-mono text-3xl font-medium text-white">
-                        89
+                        94
                       </span>
-                      <span className="text-xs text-white/30 mb-1">/100 (HIGH)</span>
+                      <span className="text-xs text-white/30 mb-1">
+                        /100 (CRITICAL)
+                      </span>
                     </div>
                     <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/5">
-                      <div className="h-full w-[89%] rounded-full bg-primary shadow-[0_0_10px_rgba(13,139,255,0.5)]" />
+                      <div className="h-full w-[94%] rounded-full bg-primary shadow-[0_0_10px_rgba(13,139,255,0.5)]" />
                     </div>
                   </div>
                 </div>
