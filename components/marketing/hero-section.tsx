@@ -26,7 +26,7 @@ export function HeroSection() {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-center opacity-[0.14]"
+          className="object-cover object-center opacity-[0.28]"
           priority
           quality={85}
         />
