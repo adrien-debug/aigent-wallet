@@ -37,9 +37,9 @@ Without these env vars, the marketing CTAs open **`/app` directly** (demo sessio
 **Redirect URL (Supabase Dashboard → Authentication → URL configuration):**
 
 - Local: `http://localhost:3000/auth/callback`
-- Production: `https://<your-domain>/auth/callback`
+- Production (Railway): `https://aigent-web-production.up.railway.app/auth/callback`
 
-**Preview / branching:** on Vercel, map **Preview** environment variables to a Supabase **branch** (or separate project) URL and anon key so preview deployments do not hit production auth.
+**Preview / branching:** map **Preview** environment variables to a Supabase **branch** (or separate project) URL and anon key so preview deployments do not hit production auth.
 
 ## API (v1)
 
@@ -89,6 +89,13 @@ Sans variable d’environnement, l’API reste ouverte (warning en logs) — pra
 ## Deploy
 
 - **GitHub:** https://github.com/adrien-debug/aigent-wallet
-- **Production (Vercel):** https://aigent-wallet.vercel.app
+- **Production (Railway):** https://aigent-web-production.up.railway.app
+- **Supabase project:** `bwfkvpncgzybglultpsx` (eu-west-1) — [Dashboard](https://supabase.com/dashboard/project/bwfkvpncgzybglultpsx)
 
-Git → Vercel : le projet est lié au dépôt ; chaque push sur `main` redéploie. Pour Supabase + previews, utiliser une branche Git dédiée et des variables **Preview** Vercel alignées sur une branche ou un projet Supabase séparé.
+### Railway
+
+Projet : `aigent-wallet` / service `aigent-web`. Déploiement via `railway up` (ou GitHub push si connecté). Variables d'env configurées dans Railway (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `PORT=3000`).
+
+### Supabase
+
+Config locale dans `supabase/config.toml`. Pousser les changements auth/API : `supabase config push`. Redirect URLs configurées pour `localhost:3000` + Railway.
