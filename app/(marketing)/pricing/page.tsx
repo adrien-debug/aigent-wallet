@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
 import { PricingCard } from "@/components/marketing/pricing-card";
 import { pricingPlans } from "@/data/pricing";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description:
+    "Starter, Growth, and Enterprise plans for wallet limits, policies, audit retention, risk engine, and API access.",
+};
 
 export default function PricingPage() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AuditTimeline } from "@/components/dashboard/audit-timeline";
 import { auditEvents } from "@/data/audit";
 import {
@@ -11,6 +12,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import type { ComponentProps } from "react";
 import type { AuditEvent } from "@/types";
+
+export const metadata: Metadata = {
+  title: "Audit",
+  description: "Immutable-style event trail with actors, results, timestamps, and trace IDs.",
+};
 
 const resultVariant: Record<
   AuditEvent["result"],

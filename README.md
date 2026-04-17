@@ -19,6 +19,8 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 
 No real backend or keys; UI is illustrative.
 
+**Health:** `GET /api/health` — JSON probe for uptime monitors.
+
 ## Deploy
 
 - **GitHub:** https://github.com/adrien-debug/aigent-wallet

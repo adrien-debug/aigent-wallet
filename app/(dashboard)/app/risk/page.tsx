@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { RiskPanel } from "@/components/dashboard/risk-panel";
 import { MetricCard } from "@/components/dashboard/metric-card";
 import { RiskTrendChart, SpendByWalletChart } from "@/components/dashboard/overview-charts";
@@ -6,6 +7,11 @@ import { riskTrend, spendByWallet } from "@/data/metrics";
 import { transactions } from "@/data/transactions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+
+export const metadata: Metadata = {
+  title: "Risk",
+  description: "Global score, anomaly feed, blocked flows, and counterparty heat indicators.",
+};
 
 export default function RiskPage() {
   const blocked = transactions.filter((t) => t.status === "blocked");

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
@@ -17,6 +18,12 @@ const principles = [
     body: "We build for a world where software spends money continuously, not occasionally.",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Mission and principles for programmable financial infrastructure built for autonomous, economic agents.",
+};
 
 export default function AboutPage() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
@@ -41,6 +42,12 @@ const items = [
     body: "One-click org-wide freeze with scoped thaw workflows and automatic paging.",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "Security",
+  description:
+    "Policy-based access, simulation, threshold approvals, key isolation, audit logs, rate limits, and emergency freeze.",
+};
 
 export default function SecurityPage() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { teamMembers } from "@/data/team";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -6,6 +7,12 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { SettingsSaveBar } from "@/components/dashboard/settings-save-bar";
+
+export const metadata: Metadata = {
+  title: "Settings",
+  description: "Organization profile, environments, defaults, API keys, and team access (mock).",
+};
 
 export default function SettingsPage() {
   return (
@@ -130,6 +137,7 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
       </div>
+      <SettingsSaveBar />
     </div>
   );
 }

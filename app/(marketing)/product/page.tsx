@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
 import { FeatureCard } from "@/components/marketing/feature-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+
+export const metadata: Metadata = {
+  title: "Product",
+  description:
+    "Agent-native wallets with policy compilation, sub-wallets, streaming payments, and AI-grade audit trails.",
+};
 
 export default function ProductPage() {
   return (

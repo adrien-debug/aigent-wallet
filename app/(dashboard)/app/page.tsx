@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { MetricCard } from "@/components/dashboard/metric-card";
 import {
@@ -19,6 +20,11 @@ import { auditEvents } from "@/data/audit";
 import { policies } from "@/data/policies";
 import { formatNumber, formatUsd } from "@/lib/utils";
 import { StatusBadge, RiskBadge } from "@/components/dashboard/status-badge";
+
+export const metadata: Metadata = {
+  title: "Overview",
+  description: "Balances, volume, risk, alerts, and recent audit activity across agent wallets.",
+};
 
 export default function AppOverviewPage() {
   const recentTx = transactions.slice(0, 5);

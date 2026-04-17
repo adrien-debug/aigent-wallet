@@ -20,12 +20,14 @@ import {
 } from "@/components/ui/select";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { CommandPalette } from "@/components/dashboard/command-palette";
+import { TopbarBreadcrumbs } from "@/components/dashboard/topbar-breadcrumbs";
 
 export function Topbar() {
   return (
     <header className="flex h-16 items-center gap-3 border-b border-border/60 bg-background/70 px-4 backdrop-blur sm:px-6">
-      <div className="flex flex-1 items-center gap-3">
+      <div className="flex min-w-0 flex-1 items-center gap-4">
         <CommandPalette />
+        <TopbarBreadcrumbs className="hidden md:flex" />
       </div>
       <div className="flex items-center gap-2">
         <Select defaultValue="Production">

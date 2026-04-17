@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { FadeInView } from "@/components/shared/fade-in-view";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { SectionHeader } from "@/components/marketing/section-header";
@@ -7,6 +8,12 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { developerSnippets } from "@/data/developer-snippets";
+
+export const metadata: Metadata = {
+  title: "Developers",
+  description:
+    "SDK quickstart, policy evaluation, signed webhooks, and CI-friendly fixtures for agent treasuries.",
+};
 
 export default function DevelopersPage() {
   return (

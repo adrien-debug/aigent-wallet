@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -21,6 +22,9 @@ export function RequestAccessDialog() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSent(true);
+    toast.success("Request received", {
+      description: "We’ll follow up within two business days with sandbox access.",
+    });
     setTimeout(() => {
       setOpen(false);
       setSent(false);
