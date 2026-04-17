@@ -36,7 +36,7 @@ export function HeroSection() {
               Treasury.
             </h1>
             <p className="mx-auto max-w-2xl text-pretty text-xl text-white/50 sm:text-2xl">
-              The financial operating system built for AI agents.
+              The financial OS for AI agents.
             </p>
           </motion.div>
           <motion.div
@@ -61,22 +61,22 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Minimalist 3D Dashboard Metrics */}
+        {/* Minimalist Dashboard Metrics */}
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 40, rotateX: 15 }}
-          animate={reduce ? undefined : { opacity: 1, y: 0, rotateX: 0 }}
+          initial={reduce ? false : { opacity: 0, y: 40 }}
+          animate={reduce ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mt-32 w-full max-w-4xl [perspective:1000px]"
+          className="mt-32 w-full max-w-4xl"
         >
-          <div className="relative rounded-[2.5rem] border border-white/10 bg-black/40 p-2 shadow-[0_0_100px_-20px_rgba(13,139,255,0.15)] backdrop-blur-2xl">
-            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-white/5 to-transparent opacity-50" />
-            <div className="relative rounded-[2rem] border border-white/10 bg-[#0a0a0a]/80 px-8 py-12 sm:px-16 sm:py-16">
+          <div className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.02] shadow-[0_0_120px_-20px_rgba(13,139,255,0.15)] backdrop-blur-3xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50" />
+            <div className="relative px-8 py-16 sm:px-16 sm:py-20">
               <div className="grid grid-cols-1 gap-12 divide-y divide-white/10 sm:grid-cols-3 sm:gap-6 sm:divide-x sm:divide-y-0">
                 <div className="flex flex-col items-center justify-center text-center">
                   <p className="text-sm font-medium uppercase tracking-widest text-white/40">
                     Volume
                   </p>
-                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white">
+                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
                     {formatUsd(dashboardMetrics.totalBalanceUsd)}
                   </p>
                 </div>
@@ -84,7 +84,7 @@ export function HeroSection() {
                   <p className="text-sm font-medium uppercase tracking-widest text-white/40">
                     Compliance
                   </p>
-                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white">
+                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
                     {formatNumber(dashboardMetrics.policyCompliancePct, 1)}%
                   </p>
                 </div>
@@ -92,7 +92,7 @@ export function HeroSection() {
                   <p className="text-sm font-medium uppercase tracking-widest text-white/40">
                     Latency
                   </p>
-                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white">
+                  <p className="mt-4 font-mono text-5xl font-medium tracking-tighter text-white sm:text-6xl">
                     12ms
                   </p>
                 </div>

@@ -53,9 +53,9 @@ export function LandingSections() {
             description="Human-centric wallets assume discretionary signing. Agents need programmatic limits, counterparty intelligence, and replay-safe execution paths."
           />
 
-          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-12 lg:gap-8">
-            {/* Block 1: White Background, Massive Typography (Col span 7) */}
-            <div className="group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-white p-10 transition-transform hover:-translate-y-1 md:col-span-7 lg:p-16">
+          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+            {/* Block 1: White Background, Massive Typography */}
+            <div className="group relative flex min-h-[500px] flex-col justify-between overflow-hidden rounded-[3rem] bg-white p-10 transition-transform hover:-translate-y-1 lg:p-16">
               <div>
                 <h3 className="text-balance text-4xl font-medium tracking-tight text-black sm:text-5xl lg:text-6xl lg:leading-[1.1]">
                   Build to run the future of work
@@ -76,8 +76,8 @@ export function LandingSections() {
               </div>
             </div>
 
-            {/* Block 2: Black Background, Tall (Col span 5) */}
-            <div className="group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-5 lg:p-16">
+            {/* Block 2: Black Background, Tall */}
+            <div className="group relative flex min-h-[500px] flex-col justify-between overflow-hidden rounded-[3rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 lg:p-16">
               <div>
                 <h3 className="text-balance text-4xl font-medium tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]">
                   The foundation
@@ -97,31 +97,6 @@ export function LandingSections() {
                 </div>
               </div>
             </div>
-
-            {/* Block 3, 4, 5: Features (Small, Monochromatic) */}
-            <div className="group relative col-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-4">
-              <Shield className="mb-8 h-8 w-8 text-white/40 transition-colors group-hover:text-white" />
-              <h3 className="text-2xl font-medium text-white">
-                Deterministic Guardrails
-              </h3>
-              <p className="mt-4 text-lg text-white/60">
-                Every spend path is explainable before broadcast.
-              </p>
-            </div>
-            <div className="group relative col-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-4">
-              <Activity className="mb-8 h-8 w-8 text-white/40 transition-colors group-hover:text-white" />
-              <h3 className="text-2xl font-medium text-white">Operator Telemetry</h3>
-              <p className="mt-4 text-lg text-white/60">
-                Volume, drift, and anomaly signals in real-time.
-              </p>
-            </div>
-            <div className="group relative col-span-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0a] p-10 transition-transform hover:-translate-y-1 md:col-span-4">
-              <Lock className="mb-8 h-8 w-8 text-white/40 transition-colors group-hover:text-white" />
-              <h3 className="text-2xl font-medium text-white">Scoped Credentials</h3>
-              <p className="mt-4 text-lg text-white/60">
-                Least-privilege keys with automatic rotation hooks.
-              </p>
-            </div>
           </div>
         </PageWrapper>
       </FadeInView>
@@ -133,23 +108,12 @@ export function LandingSections() {
               <h2 className="text-balance text-6xl font-medium tracking-tighter text-black sm:text-8xl">
                 Start building.
               </h2>
-              <p className="mt-8 text-xl text-black/60 sm:text-2xl">
-                Stand up a sandbox org, connect policies, and mirror your production
-                topology in minutes.
-              </p>
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+              <div className="mt-16 flex items-center justify-center">
                 <RequestAccessDialog>
-                  <Button className="h-14 rounded-full bg-black px-10 text-lg font-medium text-white transition-transform hover:-translate-y-1 hover:bg-black/90 hover:shadow-2xl">
+                  <Button className="h-16 rounded-full bg-black px-12 text-xl font-medium text-white transition-transform hover:-translate-y-1 hover:bg-black/90 hover:shadow-2xl">
                     Request access
                   </Button>
                 </RequestAccessDialog>
-                <Button
-                  variant="outline"
-                  className="h-14 rounded-full border-black/10 bg-transparent px-10 text-lg text-black transition-transform hover:-translate-y-1 hover:bg-black/5"
-                  asChild
-                >
-                  <Link href="/developers">Developer docs</Link>
-                </Button>
               </div>
             </div>
           </div>
