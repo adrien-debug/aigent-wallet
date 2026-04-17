@@ -43,236 +43,115 @@ export function SocialProof() {
 
 export function LandingSections() {
   return (
-    <div className="space-y-24 pb-24 pt-10 sm:space-y-28 sm:pb-28">
-      <FadeInView>
-        <PageWrapper>
-          <SectionHeader
-            eyebrow="Architecture"
-            title="Why agent wallets need a new substrate"
-            description="Human-centric wallets assume discretionary signing. Agents need programmatic limits, counterparty intelligence, and replay-safe execution paths that survive scale."
-          />
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                Deterministic guardrails
-              </h3>
-              <p className="relative z-10 mt-2 text-sm text-white/60">
-                Policies compile to evaluation traces. Every spend path is explainable
-                before broadcast.
-              </p>
-            </div>
-            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                Hierarchical treasuries
-              </h3>
-              <p className="relative z-10 mt-2 text-sm text-white/60">
-                Treasury fans out into scoped sub-wallets with caps, asset rules, and
-                agent ownership.
-              </p>
-            </div>
-            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                Operator-grade telemetry
-              </h3>
-              <p className="relative z-10 mt-2 text-sm text-white/60">
-                Volume, drift, and anomaly signals surface where finance and platform
-                teams already work.
-              </p>
-            </div>
-          </div>
-        </PageWrapper>
-      </FadeInView>
-
-      <FadeInView>
-        <PageWrapper className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <SectionHeader
-            eyebrow="Treasury"
-            title="Programmable treasury for autonomous systems"
-            description="Model budgets as code. Route machine payments through simulation, approvals, and immutable audit without slowing agents down."
-          />
-          <Card className="border-border/80 bg-card/70">
-            <CardContent className="space-y-4 p-6">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Streaming settlement</span>
-                <Badge variant="muted">USDC</Badge>
-              </div>
-              <div className="h-2 rounded-full bg-muted">
-                <div className="h-2 w-[68%] rounded-full bg-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Sub-second policy checks on outbound flows with burst-aware smoothing
-                for GPU and data workloads.
-              </p>
-            </CardContent>
-          </Card>
-        </PageWrapper>
-      </FadeInView>
-
-      <FadeInView>
-        <PageWrapper className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <Card className="order-2 border-border/80 bg-card/70 lg:order-1">
-            <CardContent className="space-y-3 p-6 font-mono text-xs text-muted-foreground">
-              <p className="text-foreground">policy.evaluate(intent)</p>
-              <p>→ simulation.ok</p>
-              <p>→ risk.score = 18</p>
-              <p>→ approval.not_required</p>
-              <p className="text-emerald-300">→ relay.broadcast()</p>
-            </CardContent>
-          </Card>
-          <div className="order-1 space-y-6 lg:order-2">
-            <SectionHeader
-              eyebrow="Policy engine"
-              title="Rules that behave like infrastructure"
-              description="Author policies once, version them like services, and shadow-test against live traffic before enforcement."
-            />
-          </div>
-        </PageWrapper>
-      </FadeInView>
-
+    <div className="space-y-32 pb-32 pt-16 sm:space-y-40 sm:pb-40">
       <FadeInView>
         <PageWrapper>
           <SectionHeader
             align="center"
-            eyebrow="Payments"
-            title="Machine-native payments with adult supervision"
-            description="M2M transfers inherit counterparty risk models, velocity controls, and circuit breakers tuned for autonomous actors."
+            eyebrow="The OS"
+            title="A new substrate for agents"
+            description="Human-centric wallets assume discretionary signing. Agents need programmatic limits, counterparty intelligence, and replay-safe execution paths."
           />
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-10%" }}
-            className="mt-10 grid gap-6 md:grid-cols-2"
-          >
-            <motion.div variants={fadeUp}>
-              <div className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                  Counterparty graph
-                </h3>
-                <p className="relative z-10 mt-2 text-sm text-white/60">
-                  First-touch flows pause or route to review based on historical
-                  behavior and attestations.
+
+          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-6">
+            {/* Block 1: Policy Engine (Large) */}
+            <div className="group relative col-span-1 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04] md:col-span-2 lg:p-12">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <Terminal className="mb-6 h-8 w-8 text-primary" />
+              <h3 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
+                Infrastructure as Code
+              </h3>
+              <p className="mt-4 max-w-md text-lg text-white/60">
+                Author policies once, version them like services, and shadow-test
+                against live traffic before enforcement.
+              </p>
+              <div className="mt-10 rounded-2xl border border-white/10 bg-black/50 p-6 font-mono text-sm text-white/40 shadow-inner">
+                <p className="text-white/80">policy.evaluate(intent)</p>
+                <p className="mt-2">→ simulation.ok</p>
+                <p>
+                  → risk.score = <span className="text-primary">18</span>
                 </p>
+                <p>→ approval.not_required</p>
+                <p className="mt-2 text-emerald-400">→ relay.broadcast()</p>
               </div>
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <div className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                  Approvals that scale
-                </h3>
-                <p className="relative z-10 mt-2 text-sm text-white/60">
-                  Quorum workflows with SLA timers, delegated break-glass, and automatic
-                  rollback on breach.
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </PageWrapper>
-      </FadeInView>
-
-      <FadeInView>
-        <PageWrapper className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <SectionHeader
-            eyebrow="Risk & audit"
-            title="Risk controls with receipts"
-            description="Anomaly models, rate limits, and policy drift alerts converge into a single audit timeline with trace IDs end-to-end."
-          />
-          <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-            <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-              Immutable audit trail
-            </h3>
-            <p className="relative z-10 mt-2 text-sm text-white/60">
-              Every decision—allow, deny, review—ships with structured context for
-              regulators and internal security.
-            </p>
-          </div>
-        </PageWrapper>
-      </FadeInView>
-
-      <FadeInView>
-        <PageWrapper>
-          <SectionHeader
-            eyebrow="Orchestration"
-            title="Multi-wallet orchestration without chaos"
-            description="Visualize parent treasuries, agent scopes, and policy attachments in one surface purpose-built for operators."
-          />
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                Parent / child graphs
-              </h3>
-              <p className="relative z-10 mt-2 text-sm text-white/60">
-                Navigate complex hierarchies with health signals per node.
-              </p>
             </div>
-            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                Scoped credentials
-              </h3>
-              <p className="relative z-10 mt-2 text-sm text-white/60">
-                Agents receive least-privilege keys with automatic rotation hooks.
-              </p>
-            </div>
-            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <h3 className="relative z-10 text-lg font-semibold tracking-tight text-white">
-                Environment parity
-              </h3>
-              <p className="relative z-10 mt-2 text-sm text-white/60">
-                Sandbox policies against production-shaped traffic safely.
-              </p>
-            </div>
-          </div>
-        </PageWrapper>
-      </FadeInView>
 
-      <FadeInView>
-        <PageWrapper className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <SectionHeader
-            eyebrow="Developers"
-            title="Developer-first integration"
-            description="Typed SDKs, signed webhooks, and policy hooks that fit into the same CI/CD rigor as the rest of your stack."
-          />
-          <Card className="border-border/80 bg-card/70">
-            <CardContent className="space-y-3 p-6 text-sm text-muted-foreground">
-              <p className="text-foreground font-medium">Ship faster</p>
-              <ul className="list-disc space-y-2 pl-5">
-                <li>Deterministic local fixtures for agents</li>
-                <li>OpenAPI-compatible control plane</li>
-                <li>Replayable simulations in PR checks</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </PageWrapper>
-      </FadeInView>
-
-      <FadeInView>
-        <PageWrapper>
-          <Card className="border-primary/25 bg-gradient-to-br from-primary/10 via-card to-card">
-            <CardContent className="flex flex-col gap-6 p-8 sm:flex-row sm:items-center sm:justify-between">
+            {/* Block 2: Streaming (Tall) */}
+            <div className="group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04] lg:p-12">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div>
-                <p className="text-sm font-semibold">Ready when your agents are</p>
-                <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-                  Stand up a sandbox org, connect policies, and mirror your production
-                  topology without moving funds.
+                <Zap className="mb-6 h-8 w-8 text-primary" />
+                <h3 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
+                  Sub-second Settlement
+                </h3>
+                <p className="mt-4 text-lg text-white/60">
+                  Burst-aware smoothing for GPU and data workloads. Machine payments
+                  that don't block execution.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="mt-12 space-y-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-medium text-white/80">USDC Stream</span>
+                  <span className="font-mono text-primary">68%</span>
+                </div>
+                <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                  <div className="h-full w-[68%] rounded-full bg-primary shadow-[0_0_12px_rgba(13,139,255,0.8)]" />
+                </div>
+              </div>
+            </div>
+
+            {/* Block 3, 4, 5: Features (Small) */}
+            <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <Shield className="mb-6 h-6 w-6 text-white/40 transition-colors group-hover:text-primary" />
+              <h3 className="text-xl font-medium text-white">
+                Deterministic Guardrails
+              </h3>
+              <p className="mt-3 text-base text-white/60">
+                Every spend path is explainable before broadcast.
+              </p>
+            </div>
+            <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <Activity className="mb-6 h-6 w-6 text-white/40 transition-colors group-hover:text-primary" />
+              <h3 className="text-xl font-medium text-white">Operator Telemetry</h3>
+              <p className="mt-3 text-base text-white/60">
+                Volume, drift, and anomaly signals in real-time.
+              </p>
+            </div>
+            <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.04]">
+              <Lock className="mb-6 h-6 w-6 text-white/40 transition-colors group-hover:text-primary" />
+              <h3 className="text-xl font-medium text-white">Scoped Credentials</h3>
+              <p className="mt-3 text-base text-white/60">
+                Least-privilege keys with automatic rotation hooks.
+              </p>
+            </div>
+          </div>
+        </PageWrapper>
+      </FadeInView>
+
+      <FadeInView>
+        <PageWrapper>
+          <div className="relative overflow-hidden rounded-[3rem] border border-primary/20 bg-primary/5 px-6 py-20 text-center sm:px-16 sm:py-32">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(13,139,255,0.15),transparent)]" />
+            <div className="relative z-10 mx-auto max-w-2xl">
+              <h2 className="text-balance text-4xl font-medium tracking-tight text-white sm:text-6xl">
+                Ready when your agents are.
+              </h2>
+              <p className="mt-6 text-lg text-white/60 sm:text-xl">
+                Stand up a sandbox org, connect policies, and mirror your production
+                topology without moving funds.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <RequestAccessDialog />
-                <Button variant="outline" asChild>
+                <Button
+                  variant="outline"
+                  className="h-12 rounded-full border-white/10 bg-white/5 px-8 text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
+                  asChild
+                >
                   <Link href="/developers">Developer docs</Link>
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </PageWrapper>
       </FadeInView>
     </div>
