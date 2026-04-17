@@ -3,7 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Shield } from "lucide-react";
+import {
+  ArrowUpRight,
+  Shield,
+  Bot,
+  Activity,
+  CheckCircle2,
+  XCircle,
+  Terminal,
+  Cpu,
+  Globe,
+} from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -66,7 +76,7 @@ export function HeroSection() {
           initial={reduce ? false : { opacity: 0, y: 40 }}
           animate={reduce ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mt-32 w-full max-w-5xl"
+          className="mt-32 w-full max-w-[1200px]"
         >
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#030303] shadow-[0_0_120px_-20px_rgba(13,139,255,0.15)] ring-1 ring-white/5">
             {/* Top Bar (macOS style) */}
@@ -82,88 +92,238 @@ export function HeroSection() {
               <div className="w-12" /> {/* Spacer for symmetry */}
             </div>
 
-            {/* Dashboard Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-3">
-              {/* Main Chart Area (Left 2/3) */}
-              <div className="relative flex flex-col border-b border-white/5 p-8 lg:col-span-2 lg:border-b-0 lg:border-r">
-                {/* Subtle grid background for the chart area */}
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-[length:32px_32px] opacity-5" />
-
-                <div className="relative z-10 flex items-start justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-white/50">Treasury Volume</p>
-                    <p className="mt-2 font-mono text-4xl font-medium tracking-tighter text-white sm:text-5xl">
-                      {formatUsd(dashboardMetrics.totalBalanceUsd)}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
-                    <ArrowUpRight className="h-3 w-3" />
-                    14.2%
-                  </div>
+            {/* Dashboard Content - 3 Column Layout */}
+            <div className="flex flex-col lg:flex-row h-auto lg:h-[600px]">
+              {/* Left Sidebar: Agents List */}
+              <div className="flex w-full flex-col border-b border-white/5 bg-white/[0.01] lg:w-72 lg:border-b-0 lg:border-r">
+                <div className="border-b border-white/5 px-6 py-4">
+                  <p className="text-xs font-medium uppercase tracking-widest text-white/40">
+                    Active Agents
+                  </p>
                 </div>
-
-                {/* SVG Area Chart */}
-                <div className="relative z-10 mt-12 flex-1 min-h-[180px] w-full">
-                  <svg
-                    viewBox="0 0 400 100"
-                    preserveAspectRatio="none"
-                    className="absolute inset-0 h-full w-full overflow-visible"
-                  >
-                    <defs>
-                      <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="rgba(13, 139, 255, 0.25)" />
-                        <stop offset="100%" stopColor="rgba(13, 139, 255, 0)" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M0,80 C20,80 30,65 50,65 C70,65 80,75 100,75 C120,75 130,40 150,40 C170,40 180,55 200,55 C220,55 230,20 250,20 C270,20 280,35 300,35 C320,35 330,10 350,10 C370,10 380,25 400,25 L400,100 L0,100 Z"
-                      fill="url(#chart-gradient)"
-                    />
-                    <path
-                      d="M0,80 C20,80 30,65 50,65 C70,65 80,75 100,75 C120,75 130,40 150,40 C170,40 180,55 200,55 C220,55 230,20 250,20 C270,20 280,35 300,35 C320,35 330,10 350,10 C370,10 380,25 400,25"
-                      fill="none"
-                      stroke="#0d8bff"
-                      strokeWidth="2"
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  </svg>
+                <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                  {/* Agent 1 */}
+                  <div className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.02] p-3 transition-colors hover:bg-white/[0.04]">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
+                        <Bot className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white">
+                          DeFi Trader Alpha
+                        </p>
+                        <p className="font-mono text-[10px] text-white/40">
+                          0x7a2...4f9c
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+                  </div>
+                  {/* Agent 2 */}
+                  <div className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.02] p-3 transition-colors hover:bg-white/[0.04]">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <Cpu className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white">
+                          AWS Provisioner
+                        </p>
+                        <p className="font-mono text-[10px] text-white/40">us-east-1</p>
+                      </div>
+                    </div>
+                    <div className="h-2 w-2 rounded-full bg-primary" />
+                  </div>
+                  {/* Agent 3 */}
+                  <div className="flex items-center justify-between rounded-xl border border-red-500/20 bg-red-500/5 p-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-500/10 text-red-400">
+                        <Globe className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white">Data Scraper</p>
+                        <p className="font-mono text-[10px] text-red-400">
+                          POLICY_BREACH
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-2 w-2 rounded-full bg-red-500" />
+                  </div>
                 </div>
               </div>
 
-              {/* Sidebar Metrics (Right 1/3) */}
-              <div className="flex flex-col bg-white/[0.01]">
-                {/* Compliance */}
-                <div className="flex-1 border-b border-white/5 p-8">
-                  <p className="text-sm font-medium text-white/50">Policy Compliance</p>
-                  <div className="mt-4 flex items-baseline gap-3">
-                    <p className="font-mono text-4xl font-medium tracking-tighter text-white">
-                      {formatNumber(dashboardMetrics.policyCompliancePct, 1)}%
-                    </p>
-                    <span className="rounded bg-white/5 px-2 py-0.5 font-mono text-[10px] text-white/40">
-                      TARGET 99.0%
-                    </span>
+              {/* Main Content: Chart + Transactions */}
+              <div className="flex flex-1 flex-col">
+                {/* Top Half: Chart */}
+                <div className="relative flex flex-col border-b border-white/5 p-8 lg:h-1/2">
+                  <div className="absolute inset-0 bg-[url('/grid.svg')] bg-[length:32px_32px] opacity-5" />
+                  <div className="relative z-10 flex items-start justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-white/50">
+                        Treasury Volume (24h)
+                      </p>
+                      <p className="mt-2 font-mono text-4xl font-medium tracking-tighter text-white sm:text-5xl">
+                        {formatUsd(dashboardMetrics.totalBalanceUsd)}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                      <ArrowUpRight className="h-3 w-3" />
+                      14.2%
+                    </div>
                   </div>
-                  <div className="mt-8 h-1.5 w-full overflow-hidden rounded-full bg-white/5">
-                    <div className="h-full w-[99.4%] rounded-full bg-primary shadow-[0_0_10px_rgba(13,139,255,0.5)]" />
+
+                  {/* SVG Area Chart */}
+                  <div className="relative z-10 mt-8 flex-1 w-full">
+                    <svg
+                      viewBox="0 0 400 100"
+                      preserveAspectRatio="none"
+                      className="absolute inset-0 h-full w-full overflow-visible"
+                    >
+                      <defs>
+                        <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="rgba(13, 139, 255, 0.25)" />
+                          <stop offset="100%" stopColor="rgba(13, 139, 255, 0)" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        d="M0,80 C20,80 30,65 50,65 C70,65 80,75 100,75 C120,75 130,40 150,40 C170,40 180,55 200,55 C220,55 230,20 250,20 C270,20 280,35 300,35 C320,35 330,10 350,10 C370,10 380,25 400,25 L400,100 L0,100 Z"
+                        fill="url(#chart-gradient)"
+                      />
+                      <path
+                        d="M0,80 C20,80 30,65 50,65 C70,65 80,75 100,75 C120,75 130,40 150,40 C170,40 180,55 200,55 C220,55 230,20 250,20 C270,20 280,35 300,35 C320,35 330,10 350,10 C370,10 380,25 400,25"
+                        fill="none"
+                        stroke="#0d8bff"
+                        strokeWidth="2"
+                        vectorEffect="non-scaling-stroke"
+                      />
+                    </svg>
                   </div>
                 </div>
 
-                {/* Risk & Wallets */}
-                <div className="flex flex-1 gap-6 p-8">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-white/50">Active Wallets</p>
-                    <p className="mt-4 font-mono text-3xl font-medium tracking-tighter text-white">
-                      {dashboardMetrics.activeWallets}
+                {/* Bottom Half: Transactions */}
+                <div className="flex flex-col lg:h-1/2">
+                  <div className="border-b border-white/5 px-8 py-4">
+                    <p className="text-xs font-medium uppercase tracking-widest text-white/40">
+                      Recent Intents
                     </p>
                   </div>
-                  <div className="w-px bg-white/5" />
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-white/50">Risk Score</p>
-                    <div className="mt-4 flex items-baseline gap-1">
-                      <p className="font-mono text-3xl font-medium tracking-tighter text-white">
-                        {dashboardMetrics.riskScore}
-                      </p>
-                      <span className="text-sm text-white/30">/100</span>
+                  <div className="flex-1 overflow-y-auto p-4 px-8">
+                    <table className="w-full text-left text-sm">
+                      <thead>
+                        <tr className="border-b border-white/5 text-white/40">
+                          <th className="pb-3 font-medium">Agent</th>
+                          <th className="pb-3 font-medium">Action</th>
+                          <th className="pb-3 font-medium text-right">Amount</th>
+                          <th className="pb-3 font-medium text-right">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/5">
+                        <tr>
+                          <td className="py-4 font-medium text-white">DeFi Trader</td>
+                          <td className="py-4 font-mono text-xs text-white/60">
+                            swap_usdc_eth
+                          </td>
+                          <td className="py-4 text-right font-mono text-white">
+                            -$12,450.00
+                          </td>
+                          <td className="py-4 text-right">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400">
+                              <CheckCircle2 className="h-3 w-3" /> APPROVED
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-4 font-medium text-white">Data Scraper</td>
+                          <td className="py-4 font-mono text-xs text-white/60">
+                            pay_proxy_api
+                          </td>
+                          <td className="py-4 text-right font-mono text-white">
+                            -$4,200.00
+                          </td>
+                          <td className="py-4 text-right">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[10px] font-medium text-red-400">
+                              <XCircle className="h-3 w-3" /> BLOCKED
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-4 font-medium text-white">
+                            AWS Provisioner
+                          </td>
+                          <td className="py-4 font-mono text-xs text-white/60">
+                            topup_billing
+                          </td>
+                          <td className="py-4 text-right font-mono text-white">
+                            -$850.00
+                          </td>
+                          <td className="py-4 text-right">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400">
+                              <CheckCircle2 className="h-3 w-3" /> APPROVED
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Sidebar: Policy Trace */}
+              <div className="flex w-full flex-col border-t border-white/5 bg-[#050505] lg:w-80 lg:border-l lg:border-t-0">
+                <div className="border-b border-white/5 px-6 py-4 flex items-center justify-between">
+                  <p className="text-xs font-medium uppercase tracking-widest text-white/40">
+                    Live Trace
+                  </p>
+                  <Activity className="h-4 w-4 text-primary animate-pulse" />
+                </div>
+                <div className="flex-1 overflow-y-auto p-6">
+                  <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-4">
+                    <div className="flex items-center gap-2 text-red-400 mb-4">
+                      <Shield className="h-4 w-4" />
+                      <span className="text-xs font-bold uppercase tracking-wider">
+                        Policy Violation
+                      </span>
+                    </div>
+                    <pre className="font-mono text-[10px] leading-relaxed text-white/60">
+                      <span className="text-white/40">// intent_id: req_9x2a</span>
+                      <br />
+                      {`{
+  "agent": "data_scraper",
+  "action": "pay_proxy_api",
+  "amount": 4200.00,
+  "eval": [
+    {
+      "rule": "known_vendor",
+      "pass": true
+    },
+    {
+      "rule": "daily_limit",
+      "val": 4200,
+      "max": 1000,
+      `}
+                      <span className="text-red-400 font-bold">"pass": false</span>
+                      {`
+    }
+  ],
+  `}
+                      <span className="text-red-400 font-bold">"result": "DENY"</span>
+                      {`
+}`}
+                    </pre>
+                  </div>
+
+                  <div className="mt-6 rounded-xl border border-white/5 bg-white/[0.02] p-4">
+                    <p className="text-xs font-medium text-white/40 mb-2">
+                      Risk Engine
+                    </p>
+                    <div className="flex items-end gap-2">
+                      <span className="font-mono text-3xl font-medium text-red-400">
+                        89
+                      </span>
+                      <span className="text-xs text-white/30 mb-1">/100 (HIGH)</span>
+                    </div>
+                    <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/5">
+                      <div className="h-full w-[89%] rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
                     </div>
                   </div>
                 </div>
