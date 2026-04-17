@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export function RequestAccessDialog() {
+export function RequestAccessDialog({ children }: { children?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -34,7 +34,7 @@ export function RequestAccessDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>Request access</Button>
+        {children || <Button>Request access</Button>}
       </DialogTrigger>
       <DialogContent aria-describedby="request-access-desc">
         <DialogHeader>

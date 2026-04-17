@@ -47,7 +47,11 @@ export function Navbar({ className }: { className?: string }) {
           >
             <Link href={getConsoleEntryHref()}>View demo</Link>
           </Button>
-          <RequestAccessDialog />
+          <RequestAccessDialog>
+            <Button className="h-10 rounded-full px-4 text-sm font-medium">
+              Request access
+            </Button>
+          </RequestAccessDialog>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button

@@ -44,10 +44,14 @@ export function HeroSection() {
             variants={fadeUp}
             className="flex flex-wrap items-center justify-center gap-4"
           >
-            <RequestAccessDialog />
+            <RequestAccessDialog>
+              <Button className="h-12 rounded-full px-8 text-base font-medium shadow-[0_0_40px_-10px_rgba(13,139,255,0.5)] transition-shadow hover:shadow-[0_0_60px_-15px_rgba(13,139,255,0.7)]">
+                Request access
+              </Button>
+            </RequestAccessDialog>
             <Button
               variant="outline"
-              className="h-12 rounded-full border-white/10 bg-white/5 px-8 text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
+              className="h-12 rounded-full border-white/10 bg-white/5 px-8 text-base text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
               asChild
             >
               <Link href={getConsoleEntryHref()}>
