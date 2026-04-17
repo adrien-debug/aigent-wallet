@@ -1,0 +1,31 @@
+name: Deploy (Railway)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-railway
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Railway
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'adrien-debug/aigent-wallet' }}
+    environment:
+      name: production
+      url: https://aigent-web-production.up.railway.app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: npm i -g @railway/cli
+
+      # Project token: Dashboard → Project Settings → Tokens → Create.
+      # Add to GitHub: Settings → Secrets and variables → Actions → RAILWAY_TOKEN.
+      - name: Deploy
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up --service aigent-web --detach

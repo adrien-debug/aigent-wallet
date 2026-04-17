@@ -71,11 +71,11 @@ Si `AIGENT_API_KEY` est défini (voir `.env.example`), toutes les routes **`/api
 
 `Authorization: Bearer <valeur de AIGENT_API_KEY>`
 
-Sans variable d’environnement, l’API reste ouverte (warning en logs) — pratique en local uniquement.
+Sans variable d’environnement, l’API reste ouverte (warning en logs) — pratique en local uniquement. **En production Railway, la clé est setée** : toute requête `/api/v1/*` sans Bearer renvoie `401`.
 
 ### CORS (optionnel)
 
-`AIGENT_CORS_ORIGIN` = origine exacte du front (ex. `https://aigent-wallet.vercel.app`). Active `OPTIONS` + en-têtes sur les réponses `/api/v1/*` lorsque le navigateur envoie le même `Origin`.
+`AIGENT_CORS_ORIGIN` = origine exacte du front (ex. `https://aigent-web-production.up.railway.app`). Active `OPTIONS` + en-têtes sur les réponses `/api/v1/*` lorsque le navigateur envoie le même `Origin`.
 
 ### POST (stubs + mémoire)
 
@@ -94,7 +94,14 @@ Sans variable d’environnement, l’API reste ouverte (warning en logs) — pra
 
 ### Railway
 
-Projet : `aigent-wallet` / service `aigent-web`. Déploiement via `railway up` (ou GitHub push si connecté). Variables d'env configurées dans Railway (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `PORT=3000`).
+Projet : `aigent-wallet` / service `aigent-web`. Variables d'env configurées dans Railway : `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `AIGENT_API_KEY`, `AIGENT_CORS_ORIGIN`, `PORT=3000`.
+
+**Auto-deploy** (deux options, choisir une) :
+
+1. **GitHub Actions** (`.github/workflows/deploy.yml`) — créer un project token (Railway Dashboard → Project Settings → Tokens), l'ajouter dans GitHub → Settings → Secrets → Actions sous le nom `RAILWAY_TOKEN`. Push sur `main` déploie automatiquement.
+2. **GitHub natif Railway** — Service Settings → Source → connect GitHub repo. Auto-deploy sur push + previews PR.
+
+**Déploiement manuel** : `railway up`.
 
 ### Supabase
 
