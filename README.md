@@ -40,6 +40,19 @@ Base: `/api/v1`. Découverte: `GET /api/v1` (liste des routes).
 
 Réponses: `{ ok: true, data: ... }` ou `{ ok: false, error: { code, message } }`. Données = mocks `data/*` (prêt pour brancher une DB).
 
+### Auth (Bearer)
+
+Si `AIGENT_API_KEY` est défini (voir `.env.example`), toutes les routes **`/api/v1/*`** exigent :
+
+`Authorization: Bearer <valeur de AIGENT_API_KEY>`
+
+Sans variable d’environnement, l’API reste ouverte (warning en logs) — pratique en local uniquement.
+
+### POST (stubs)
+
+- **`POST /api/v1/wallets`** — JSON : `name`, `type` (`treasury|agent|execution|research`), `network` (`ethereum|arbitrum|base|polygon`), `agent`, `dailyCapUsd` ; optionnel : `policyId`, `policyName`, `parentId`, `tags`. Réponse **201** avec `stub: true` (non persisté).
+- **`POST /api/v1/policies`** — JSON : `name`, `description`, `condition`, `severity` (`info|low|medium|high|critical`) ; optionnel : `status` (`enforced|shadow|draft`). Réponse **201** avec `stub: true`.
+
 ## Deploy
 
 - **GitHub:** https://github.com/adrien-debug/aigent-wallet
