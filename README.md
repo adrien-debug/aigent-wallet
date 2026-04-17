@@ -19,9 +19,20 @@ Next.js 14 (App Router) marketing site + wallet console with mock data.
 - `data` — mock datasets
 - `lib`, `types`
 
-No real backend or keys; UI is illustrative.
+Data is mostly mock; API v1 can persist POSTs in memory on the instance.
 
 **Health:** `GET /api/health` — JSON probe for uptime monitors.
+
+## Supabase (optional)
+
+When `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set (see `.env.example`), middleware refreshes the auth session and `GET /auth/callback` exchanges OAuth / magic-link `code` for session cookies.
+
+**Redirect URL (Supabase Dashboard → Authentication → URL configuration):**
+
+- Local: `http://localhost:3000/auth/callback`
+- Production: `https://<your-domain>/auth/callback`
+
+**Preview / branching:** on Vercel, map **Preview** environment variables to a Supabase **branch** (or separate project) URL and anon key so preview deployments do not hit production auth. The dashboard UI is not yet gated on session; this is infrastructure for future auth.
 
 ## API (v1)
 
@@ -73,4 +84,4 @@ Sans variable d’environnement, l’API reste ouverte (warning en logs) — pra
 - **GitHub:** https://github.com/adrien-debug/aigent-wallet
 - **Production (Vercel):** https://aigent-wallet.vercel.app
 
-Git → Vercel : le projet est lié au dépôt ; chaque push sur `main` redéploie.
+Git → Vercel : le projet est lié au dépôt ; chaque push sur `main` redéploie. Pour Supabase + previews, utiliser une branche Git dédiée et des variables **Preview** Vercel alignées sur une branche ou un projet Supabase séparé.
