@@ -23,13 +23,7 @@ export interface Wallet {
 
 export type TxStatus = "confirmed" | "pending" | "failed" | "blocked";
 
-export type TxCategory =
-  | "treasury"
-  | "m2m"
-  | "compute"
-  | "data"
-  | "defi"
-  | "internal";
+export type TxCategory = "treasury" | "m2m" | "compute" | "data" | "defi" | "internal";
 
 export interface Transaction {
   id: string;

@@ -15,7 +15,8 @@ import type { AuditEvent } from "@/types";
 
 export const metadata: Metadata = {
   title: "Audit",
-  description: "Immutable-style event trail with actors, results, timestamps, and trace IDs.",
+  description:
+    "Immutable-style event trail with actors, results, timestamps, and trace IDs.",
 };
 
 const resultVariant: Record<
@@ -34,7 +35,8 @@ export default function AuditPage() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Audit</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Evidence-grade trail from policy evaluation through execution and operator actions.
+          Evidence-grade trail from policy evaluation through execution and operator
+          actions.
         </p>
       </div>
       <AuditTimeline events={auditEvents} />

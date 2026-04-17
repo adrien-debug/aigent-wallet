@@ -11,7 +11,8 @@ import { SettingsSaveBar } from "@/components/dashboard/settings-save-bar";
 
 export const metadata: Metadata = {
   title: "Settings",
-  description: "Organization profile, environments, defaults, API keys, and team access (mock).",
+  description:
+    "Organization profile, environments, defaults, API keys, and team access (mock).",
 };
 
 export default function SettingsPage() {
@@ -67,13 +68,18 @@ export default function SettingsPage() {
                 <p className="text-sm font-medium">Require human approval &gt; $50k</p>
                 <p className="text-xs text-muted-foreground">Applies to new wallets.</p>
               </div>
-              <Switch defaultChecked aria-label="Require human approval above threshold" />
+              <Switch
+                defaultChecked
+                aria-label="Require human approval above threshold"
+              />
             </div>
             <Separator />
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium">Stablecoin-first treasury</p>
-                <p className="text-xs text-muted-foreground">Outbound limited to USDC/USDT.</p>
+                <p className="text-xs text-muted-foreground">
+                  Outbound limited to USDC/USDT.
+                </p>
               </div>
               <Switch defaultChecked aria-label="Stablecoin first treasury" />
             </div>

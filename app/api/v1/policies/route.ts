@@ -3,16 +3,8 @@ import { apiLogInfo } from "@/lib/api/log";
 import { listPolicies, persistPolicy } from "@/lib/api/memory-store";
 import { readJson } from "@/lib/api/read-json";
 import { jsonErr, jsonOk } from "@/lib/api/response";
-import {
-  buildStubPolicy,
-  isPolicySeverity,
-  isPolicyStatus,
-} from "@/lib/api/stubs";
-import {
-  optDiscriminant,
-  reqDiscriminant,
-  reqTrimmedString,
-} from "@/lib/api/validate";
+import { buildStubPolicy, isPolicySeverity, isPolicyStatus } from "@/lib/api/stubs";
+import { optDiscriminant, reqDiscriminant, reqTrimmedString } from "@/lib/api/validate";
 
 export function GET(request: Request) {
   const policies = listPolicies();

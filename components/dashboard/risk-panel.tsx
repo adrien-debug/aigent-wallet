@@ -4,10 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-const sev: Record<
-  RiskAlert["severity"],
-  ComponentProps<typeof Badge>["variant"]
-> = {
+const sev: Record<RiskAlert["severity"], ComponentProps<typeof Badge>["variant"]> = {
   low: "muted",
   medium: "warning",
   high: "danger",

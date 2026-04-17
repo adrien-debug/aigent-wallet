@@ -27,7 +27,10 @@ export function TopbarBreadcrumbs({ className }: { className?: string }) {
 
   return (
     <nav
-      className={cn("flex min-w-0 items-center gap-1 text-xs text-muted-foreground", className)}
+      className={cn(
+        "flex min-w-0 items-center gap-1 text-xs text-muted-foreground",
+        className,
+      )}
       aria-label="Fil d’Ariane"
     >
       <Link

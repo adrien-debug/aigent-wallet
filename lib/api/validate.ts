@@ -44,11 +44,7 @@ export function reqFiniteNumber(
   if (min !== undefined && v < min) {
     return {
       ok: false,
-      response: validationError(
-        request,
-        key,
-        `\`${key}\` must be >= ${min}.`,
-      ),
+      response: validationError(request, key, `\`${key}\` must be >= ${min}.`),
     };
   }
   return { ok: true, value: v };

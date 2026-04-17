@@ -12,7 +12,12 @@ import { AuditTimeline } from "@/components/dashboard/audit-timeline";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { dashboardMetrics, riskTrend, spendByWallet, volumeSeries } from "@/data/metrics";
+import {
+  dashboardMetrics,
+  riskTrend,
+  spendByWallet,
+  volumeSeries,
+} from "@/data/metrics";
 import { transactions } from "@/data/transactions";
 import { wallets } from "@/data/wallets";
 import { riskAlerts } from "@/data/alerts";
@@ -23,7 +28,8 @@ import { StatusBadge, RiskBadge } from "@/components/dashboard/status-badge";
 
 export const metadata: Metadata = {
   title: "Overview",
-  description: "Balances, volume, risk, alerts, and recent audit activity across agent wallets.",
+  description:
+    "Balances, volume, risk, alerts, and recent audit activity across agent wallets.",
 };
 
 export default function AppOverviewPage() {
@@ -40,7 +46,10 @@ export default function AppOverviewPage() {
       </div>
       <OnboardingBanner />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        <MetricCard title="Total balance" value={formatUsd(dashboardMetrics.totalBalanceUsd)} />
+        <MetricCard
+          title="Total balance"
+          value={formatUsd(dashboardMetrics.totalBalanceUsd)}
+        />
         <MetricCard
           title="Active agent wallets"
           value={String(dashboardMetrics.activeWallets)}
@@ -91,7 +100,9 @@ export default function AppOverviewPage() {
                   <p className="font-mono text-xs text-muted-foreground">{tx.hash}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-sm">{formatNumber(tx.amount, 0)} {tx.token}</span>
+                  <span className="font-mono text-sm">
+                    {formatNumber(tx.amount, 0)} {tx.token}
+                  </span>
                   <StatusBadge kind="transaction" value={tx.status} />
                   <RiskBadge flag={tx.riskFlag} />
                 </div>
@@ -134,7 +145,10 @@ export default function AppOverviewPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             {riskAlerts.slice(0, 3).map((a) => (
-              <div key={a.id} className="rounded-xl border border-border/70 bg-background/40 p-3">
+              <div
+                key={a.id}
+                className="rounded-xl border border-border/70 bg-background/40 p-3"
+              >
                 <p className="text-sm font-medium">{a.title}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{a.detail}</p>
               </div>
@@ -147,7 +161,10 @@ export default function AppOverviewPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             {breaches.map((p) => (
-              <div key={p.id} className="rounded-xl border border-dashed border-amber-500/30 bg-amber-500/5 p-3">
+              <div
+                key={p.id}
+                className="rounded-xl border border-dashed border-amber-500/30 bg-amber-500/5 p-3"
+              >
                 <p className="text-sm font-medium">{p.name}</p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   Shadow mode · would affect {p.walletsAffected} wallets

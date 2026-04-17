@@ -15,8 +15,8 @@ export default function NotFound() {
           This page is not part of the treasury graph
         </h1>
         <p className="mt-3 text-pretty text-sm text-muted-foreground">
-          The route you requested does not exist or was moved. Return to the marketing site or
-          open the console.
+          The route you requested does not exist or was moved. Return to the marketing
+          site or open the console.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button asChild>

@@ -1,8 +1,4 @@
-import type {
-  ChartPoint,
-  DashboardMetrics,
-  WalletSpend,
-} from "@/types";
+import type { ChartPoint, DashboardMetrics, WalletSpend } from "@/types";
 
 export const dashboardMetrics: DashboardMetrics = {
   totalBalanceUsd: 5_142_300,
@@ -28,7 +24,11 @@ export const spendByWallet: WalletSpend[] = [
   { walletId: "wal_compute_broker", walletName: "Compute Broker", spendUsd: 9_400_000 },
   { walletId: "wal_market_data", walletName: "Market Data Agent", spendUsd: 6_100_000 },
   { walletId: "wal_research_ops", walletName: "Research Ops", spendUsd: 2_800_000 },
-  { walletId: "wal_trading_exec", walletName: "Trading Execution", spendUsd: 1_200_000 },
+  {
+    walletId: "wal_trading_exec",
+    walletName: "Trading Execution",
+    spendUsd: 1_200_000,
+  },
 ];
 
 export const riskTrend: ChartPoint[] = [

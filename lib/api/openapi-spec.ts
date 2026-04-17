@@ -79,7 +79,10 @@ export const openApiDocument = {
         parameters: [
           { name: "id", in: "path", required: true, schema: { type: "string" } },
         ],
-        responses: { "200": { description: "Wallet" }, "404": { description: "Not found" } },
+        responses: {
+          "200": { description: "Wallet" },
+          "404": { description: "Not found" },
+        },
       },
     },
     "/transactions": {
@@ -97,7 +100,11 @@ export const openApiDocument = {
           },
           { name: "q", in: "query", schema: { type: "string" } },
           { name: "walletId", in: "query", schema: { type: "string" } },
-          { name: "limit", in: "query", schema: { type: "integer", default: 50, maximum: 200 } },
+          {
+            name: "limit",
+            in: "query",
+            schema: { type: "integer", default: 50, maximum: 200 },
+          },
           { name: "offset", in: "query", schema: { type: "integer", default: 0 } },
         ],
         responses: { "200": { description: "Page of transactions" } },
@@ -146,7 +153,10 @@ export const openApiDocument = {
         parameters: [
           { name: "id", in: "path", required: true, schema: { type: "string" } },
         ],
-        responses: { "200": { description: "Policy" }, "404": { description: "Not found" } },
+        responses: {
+          "200": { description: "Policy" },
+          "404": { description: "Not found" },
+        },
       },
     },
     "/audit": {

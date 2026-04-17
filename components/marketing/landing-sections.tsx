@@ -86,8 +86,8 @@ export function LandingSections() {
                 <div className="h-2 w-[68%] rounded-full bg-primary" />
               </div>
               <p className="text-sm text-muted-foreground">
-                Sub-second policy checks on outbound flows with burst-aware smoothing for
-                GPU and data workloads.
+                Sub-second policy checks on outbound flows with burst-aware smoothing
+                for GPU and data workloads.
               </p>
             </CardContent>
           </Card>
@@ -168,9 +168,18 @@ export function LandingSections() {
             description="Visualize parent treasuries, agent scopes, and policy attachments in one surface purpose-built for operators."
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <FeatureCard title="Parent / child graphs" description="Navigate complex hierarchies with health signals per node." />
-            <FeatureCard title="Scoped credentials" description="Agents receive least-privilege keys with automatic rotation hooks." />
-            <FeatureCard title="Environment parity" description="Sandbox policies against production-shaped traffic safely." />
+            <FeatureCard
+              title="Parent / child graphs"
+              description="Navigate complex hierarchies with health signals per node."
+            />
+            <FeatureCard
+              title="Scoped credentials"
+              description="Agents receive least-privilege keys with automatic rotation hooks."
+            />
+            <FeatureCard
+              title="Environment parity"
+              description="Sandbox policies against production-shaped traffic safely."
+            />
           </div>
         </PageWrapper>
       </FadeInView>

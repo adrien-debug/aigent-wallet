@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { RiskPanel } from "@/components/dashboard/risk-panel";
 import { MetricCard } from "@/components/dashboard/metric-card";
-import { RiskTrendChart, SpendByWalletChart } from "@/components/dashboard/overview-charts";
+import {
+  RiskTrendChart,
+  SpendByWalletChart,
+} from "@/components/dashboard/overview-charts";
 import { riskAlerts } from "@/data/alerts";
 import { riskTrend, spendByWallet } from "@/data/metrics";
 import { transactions } from "@/data/transactions";
@@ -10,7 +13,8 @@ import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
   title: "Risk",
-  description: "Global score, anomaly feed, blocked flows, and counterparty heat indicators.",
+  description:
+    "Global score, anomaly feed, blocked flows, and counterparty heat indicators.",
 };
 
 export default function RiskPage() {
@@ -25,7 +29,11 @@ export default function RiskPage() {
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
-        <MetricCard title="Global risk score" value="22 / 100" hint="Lower is calmer." />
+        <MetricCard
+          title="Global risk score"
+          value="22 / 100"
+          hint="Lower is calmer."
+        />
         <MetricCard title="Blocked (24h)" value={String(blocked.length)} />
         <MetricCard title="High-risk flags" value={String(highRisk.length)} />
       </div>

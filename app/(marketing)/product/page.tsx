@@ -74,7 +74,10 @@ export default function ProductPage() {
           </div>
         </FadeInView>
         <FadeInView className="mt-16">
-          <SectionHeader eyebrow="Built for" title="Teams shipping autonomous economics" />
+          <SectionHeader
+            eyebrow="Built for"
+            title="Teams shipping autonomous economics"
+          />
           <Card className="mt-8 border-border/80 bg-card/70">
             <CardContent className="flex flex-wrap gap-2 p-6">
               {[
@@ -84,7 +87,11 @@ export default function ProductPage() {
                 "Autonomous marketplaces",
                 "Internal copilots with budgets",
               ].map((label) => (
-                <Badge key={label} variant="secondary" className="rounded-lg px-3 py-1.5 text-sm">
+                <Badge
+                  key={label}
+                  variant="secondary"
+                  className="rounded-lg px-3 py-1.5 text-sm"
+                >
                   {label}
                 </Badge>
               ))}

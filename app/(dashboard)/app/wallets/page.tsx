@@ -45,7 +45,11 @@ export default function WalletsPage() {
           <CardTitle className="text-base">Directory</CardTitle>
         </CardHeader>
         <CardContent className="overflow-x-auto">
-          <WalletTable rows={wallets} selectedId={selectedId} onSelect={setSelectedId} />
+          <WalletTable
+            rows={wallets}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
+          />
         </CardContent>
       </Card>
       {selected ? (
@@ -66,15 +70,21 @@ export default function WalletsPage() {
               <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <dt className="text-xs text-muted-foreground">Balance</dt>
-                  <dd className="font-mono text-base">{formatUsd(selected.balanceUsd)}</dd>
+                  <dd className="font-mono text-base">
+                    {formatUsd(selected.balanceUsd)}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-xs text-muted-foreground">Daily cap</dt>
-                  <dd className="font-mono text-base">{formatUsd(selected.dailyCapUsd)}</dd>
+                  <dd className="font-mono text-base">
+                    {formatUsd(selected.dailyCapUsd)}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-xs text-muted-foreground">Spent today</dt>
-                  <dd className="font-mono text-base">{formatUsd(selected.spentTodayUsd)}</dd>
+                  <dd className="font-mono text-base">
+                    {formatUsd(selected.spentTodayUsd)}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-xs text-muted-foreground">Policy</dt>
@@ -103,7 +113,9 @@ export default function WalletsPage() {
             </CardHeader>
             <CardContent className="space-y-3">
               {recent.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No recent transactions for this wallet.</p>
+                <p className="text-sm text-muted-foreground">
+                  No recent transactions for this wallet.
+                </p>
               ) : (
                 recent.map((tx) => (
                   <div
@@ -112,7 +124,9 @@ export default function WalletsPage() {
                   >
                     <div>
                       <p className="text-sm font-medium">{tx.category}</p>
-                      <p className="font-mono text-xs text-muted-foreground">{tx.hash}</p>
+                      <p className="font-mono text-xs text-muted-foreground">
+                        {tx.hash}
+                      </p>
                     </div>
                     <p className="font-mono text-sm">
                       {tx.amount} {tx.token}

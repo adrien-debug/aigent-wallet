@@ -63,7 +63,9 @@ export function TransactionTable({
               </Badge>
             </TableCell>
             <TableCell className="text-muted-foreground">{tx.network}</TableCell>
-            <TableCell className="capitalize text-muted-foreground">{tx.category}</TableCell>
+            <TableCell className="capitalize text-muted-foreground">
+              {tx.category}
+            </TableCell>
             <TableCell>
               <StatusBadge kind="transaction" value={tx.status} />
             </TableCell>

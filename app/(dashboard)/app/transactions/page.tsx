@@ -63,7 +63,11 @@ export default function TransactionsPage() {
           <CardTitle className="text-base">Ledger</CardTitle>
         </CardHeader>
         <CardContent className="overflow-x-auto">
-          <TransactionTable rows={filtered} selectedId={selectedId} onSelect={setSelectedId} />
+          <TransactionTable
+            rows={filtered}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
+          />
           <p className="mt-4 text-xs text-muted-foreground">
             Showing {filtered.length} of {transactions.length} events (mock pagination).
           </p>
@@ -81,7 +85,9 @@ export default function TransactionsPage() {
             </div>
             <div>
               <p className="text-xs text-muted-foreground">Timestamp</p>
-              <p className="font-mono text-xs">{new Date(selected.timestamp).toLocaleString()}</p>
+              <p className="font-mono text-xs">
+                {new Date(selected.timestamp).toLocaleString()}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground">Wallet</p>

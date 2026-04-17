@@ -5,10 +5,6 @@ export const metadata: Metadata = {
   description: "Rule status, severity, wallet impact, and evaluation telemetry.",
 };
 
-export default function PoliciesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PoliciesLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

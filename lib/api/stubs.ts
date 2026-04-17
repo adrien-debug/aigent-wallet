@@ -74,14 +74,12 @@ export function isNetworkId(v: unknown): v is NetworkId {
 
 export function isPolicySeverity(v: unknown): v is PolicyRule["severity"] {
   return (
-    typeof v === "string" &&
-    (POLICY_SEVERITY_VALUES as readonly string[]).includes(v)
+    typeof v === "string" && (POLICY_SEVERITY_VALUES as readonly string[]).includes(v)
   );
 }
 
 export function isPolicyStatus(v: unknown): v is PolicyRule["status"] {
   return (
-    typeof v === "string" &&
-    (POLICY_STATUS_VALUES as readonly string[]).includes(v)
+    typeof v === "string" && (POLICY_STATUS_VALUES as readonly string[]).includes(v)
   );
 }

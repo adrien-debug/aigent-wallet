@@ -1,8 +1,8 @@
-export type ReadJsonResult<T> =
-  | { ok: true; data: T }
-  | { ok: false; message: string };
+export type ReadJsonResult<T> = { ok: true; data: T } | { ok: false; message: string };
 
-export async function readJson<T = unknown>(request: Request): Promise<ReadJsonResult<T>> {
+export async function readJson<T = unknown>(
+  request: Request,
+): Promise<ReadJsonResult<T>> {
   try {
     const text = await request.text();
     if (!text.trim()) {

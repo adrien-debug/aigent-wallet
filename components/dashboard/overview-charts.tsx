@@ -29,8 +29,16 @@ export function VolumeChart({ data }: { data: ChartPoint[] }) {
                 <stop offset="100%" stopColor="hsl(210 100% 52%)" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-            <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={11} />
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="hsl(var(--border))"
+              vertical={false}
+            />
+            <XAxis
+              dataKey="label"
+              stroke="hsl(var(--muted-foreground))"
+              fontSize={11}
+            />
             <YAxis
               stroke="hsl(var(--muted-foreground))"
               fontSize={11}
@@ -71,8 +79,16 @@ export function TxCountChart({ data }: { data: ChartPoint[] }) {
       <CardContent className="h-64 pt-2">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-            <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={11} />
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="hsl(var(--border))"
+              vertical={false}
+            />
+            <XAxis
+              dataKey="label"
+              stroke="hsl(var(--muted-foreground))"
+              fontSize={11}
+            />
             <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} />
             <Tooltip
               contentStyle={{
@@ -99,7 +115,11 @@ export function SpendByWalletChart({ data }: { data: WalletSpend[] }) {
       <CardContent className="h-64 pt-2">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart layout="vertical" data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="hsl(var(--border))"
+              horizontal={false}
+            />
             <XAxis
               type="number"
               stroke="hsl(var(--muted-foreground))"
@@ -145,8 +165,16 @@ export function RiskTrendChart({ data }: { data: ChartPoint[] }) {
                 <stop offset="100%" stopColor="hsl(38 92% 50%)" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-            <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={11} />
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="hsl(var(--border))"
+              vertical={false}
+            />
+            <XAxis
+              dataKey="label"
+              stroke="hsl(var(--muted-foreground))"
+              fontSize={11}
+            />
             <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} />
             <Tooltip
               contentStyle={{

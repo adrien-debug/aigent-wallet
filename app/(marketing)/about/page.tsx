@@ -52,9 +52,9 @@ export default function AboutPage() {
               <div>
                 <p className="text-sm font-semibold">Manifesto</p>
                 <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-                  We will not glamorize unchecked agent spend. We will not ship casino aesthetics. We
-                  will instrument every meaningful decision, default to deny, and give humans the
-                  levers they need when models misbehave.
+                  We will not glamorize unchecked agent spend. We will not ship casino
+                  aesthetics. We will instrument every meaningful decision, default to
+                  deny, and give humans the levers they need when models misbehave.
                 </p>
               </div>
               <div className="space-y-4 font-mono text-xs text-muted-foreground">

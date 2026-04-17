@@ -1,13 +1,12 @@
 export function MarketingBackground() {
   return (
-    <div
-      className="pointer-events-none fixed inset-0 -z-10"
-      aria-hidden
-    >
+    <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden>
       <div className="absolute inset-0 bg-background" />
       <div
         className="absolute inset-0 bg-grid-fine bg-grid opacity-[0.35]"
-        style={{ maskImage: "radial-gradient(ellipse at top, black 0%, transparent 65%)" }}
+        style={{
+          maskImage: "radial-gradient(ellipse at top, black 0%, transparent 65%)",
+        }}
       />
       <div
         className="absolute inset-0 opacity-[0.035]"

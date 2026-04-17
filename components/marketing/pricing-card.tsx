@@ -24,7 +24,8 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
     <Card
       className={cn(
         "flex flex-col border-border/80 bg-card/80",
-        plan.highlighted && "border-primary/40 shadow-[0_0_0_1px_hsl(var(--primary)/0.25)]",
+        plan.highlighted &&
+          "border-primary/40 shadow-[0_0_0_1px_hsl(var(--primary)/0.25)]",
       )}
     >
       <CardHeader className="space-y-2 pb-4">
@@ -62,7 +63,11 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
         ))}
       </CardContent>
       <CardFooter>
-        <Button className="w-full" variant={plan.highlighted ? "default" : "outline"} asChild>
+        <Button
+          className="w-full"
+          variant={plan.highlighted ? "default" : "outline"}
+          asChild
+        >
           <Link href="/developers">{plan.cta}</Link>
         </Button>
       </CardFooter>

@@ -7,11 +7,7 @@ function scrub(fields?: Fields) {
   ) as Record<string, string | number>;
 }
 
-export function apiLogError(
-  code: string,
-  httpStatus: number,
-  fields?: Fields,
-) {
+export function apiLogError(code: string, httpStatus: number, fields?: Fields) {
   console.error("[api]", JSON.stringify({ code, httpStatus, ...scrub(fields) }));
 }
 

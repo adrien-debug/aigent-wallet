@@ -3,16 +3,8 @@ import { apiLogInfo } from "@/lib/api/log";
 import { listWallets, persistWallet } from "@/lib/api/memory-store";
 import { readJson } from "@/lib/api/read-json";
 import { jsonErr, jsonOk } from "@/lib/api/response";
-import {
-  buildStubWallet,
-  isNetworkId,
-  isWalletType,
-} from "@/lib/api/stubs";
-import {
-  reqDiscriminant,
-  reqFiniteNumber,
-  reqTrimmedString,
-} from "@/lib/api/validate";
+import { buildStubWallet, isNetworkId, isWalletType } from "@/lib/api/stubs";
+import { reqDiscriminant, reqFiniteNumber, reqTrimmedString } from "@/lib/api/validate";
 
 export function GET(request: Request) {
   const wallets = listWallets();
@@ -43,10 +35,8 @@ export async function POST(request: Request) {
   const dailyCapUsd = reqFiniteNumber(b, "dailyCapUsd", request, 0);
   if (!dailyCapUsd.ok) return dailyCapUsd.response;
 
-  const policyId =
-    typeof b.policyId === "string" ? b.policyId : undefined;
-  const policyName =
-    typeof b.policyName === "string" ? b.policyName : undefined;
+  const policyId = typeof b.policyId === "string" ? b.policyId : undefined;
+  const policyName = typeof b.policyName === "string" ? b.policyName : undefined;
   const parentId =
     b.parentId === null
       ? null

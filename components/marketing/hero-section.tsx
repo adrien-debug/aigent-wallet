@@ -35,9 +35,9 @@ export function HeroSection() {
               Financial OS for AI Agents
             </h1>
             <p className="max-w-xl text-pretty text-base text-muted-foreground sm:text-lg">
-              Aigent is programmable treasury for autonomous systems: sub-wallets, machine
-              payments, policy enforcement, and an audit trail your security team can
-              actually trust.
+              Aigent is programmable treasury for autonomous systems: sub-wallets,
+              machine payments, policy enforcement, and an audit trail your security
+              team can actually trust.
             </p>
           </motion.div>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
@@ -53,16 +53,13 @@ export function HeroSection() {
             variants={fadeUp}
             className="flex flex-wrap gap-x-8 gap-y-3 text-xs text-muted-foreground"
           >
-            {[
-              "Agent Commerce",
-              "AI Ops",
-              "Autonomous Finance",
-              "Machine Payments",
-            ].map((label) => (
-              <span key={label} className="font-medium tracking-wide">
-                {label}
-              </span>
-            ))}
+            {["Agent Commerce", "AI Ops", "Autonomous Finance", "Machine Payments"].map(
+              (label) => (
+                <span key={label} className="font-medium tracking-wide">
+                  {label}
+                </span>
+              ),
+            )}
           </motion.div>
         </motion.div>
         <motion.div
@@ -104,7 +101,10 @@ export function HeroSection() {
                   <p className="text-[11px] text-muted-foreground">Risk score</p>
                   <p className="mt-1 font-mono text-lg font-semibold">
                     {dashboardMetrics.riskScore}
-                    <span className="text-xs font-normal text-muted-foreground"> /100</span>
+                    <span className="text-xs font-normal text-muted-foreground">
+                      {" "}
+                      /100
+                    </span>
                   </p>
                 </div>
               </div>
