@@ -18,7 +18,7 @@ jobs:
       name: production
       url: https://aigent-web-production.up.railway.app
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install Railway CLI
         run: npm i -g @railway/cli
